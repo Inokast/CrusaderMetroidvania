@@ -12,19 +12,27 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    public PlayerAnimation anim;
+
     [Space]
     [Header("Stats")]
     public float speed = 10;
     public float jumpForce;
-    public float fallMultiplier = 4.5f;
+    public float fallMultiplier = 4.5f; // Fall multiplier helps give a good jump feel
     public float lowFallMultiplier = 2f;
     public float wallSlideSpeed = 5;
     public float wallJumpLerp = 10;
 
+    private float x;
+    private float y;
+
     [Space]
     [Header("Booleans")]
     public bool canMove = true;
-    public bool wallJumped;
+    public bool wallJumped = false;
+    public bool wallSlide = false;
+
+    public bool fallMultiplierEnabled = true;
     
     //public bool isDashing; We might need this later
 
@@ -40,24 +48,30 @@ public class PlayerMovement : MonoBehaviour
         col = GetComponent<PlayerCollision>();
         rb = GetComponent<Rigidbody2D>();
         canMove = true;
-        //anim = GetComponentInChildren<PlayerAnimation>();
+        anim = GetComponentInChildren<PlayerAnimation>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (rb.velocity.y < 0) 
+        x = Input.GetAxis("Horizontal");
+        y = Input.GetAxis("Vertical");
+
+        anim.SetHorizontalMovement(x, y, rb.velocity.y);
+
+        if (rb.velocity.y < 0 && fallMultiplierEnabled == true) 
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
 
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump")) 
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump") && fallMultiplierEnabled == true) 
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowFallMultiplier - 1) * Time.deltaTime;
         }
 
         if (Input.GetButtonDown("Jump")) 
         {
+            anim.SetTrigger("jump");
 
             if (col.onGround == true) 
             {
@@ -73,11 +87,33 @@ public class PlayerMovement : MonoBehaviour
         if (col.onGround)
         {
             wallJumped = false;
+            wallSlide = false;
         }
 
         if (col.onWall && !col.onGround)
         {
-            WallSlide();
+            if (x != 0) 
+            {
+                wallSlide = true;
+                WallSlide();
+            }
+        }
+
+        if (!col.onWall || col.onGround) 
+        {
+            wallSlide = false;
+        }
+
+        if (x > 0) 
+        {
+            side = 1;
+            anim.Flip(side);
+        }
+
+        if (x < 0) 
+        {
+            side = -1;
+            anim.Flip(side);
         }
 
 
@@ -85,10 +121,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        
         Vector2 dir = new Vector2(x, y);
-
         Move(dir);
 
         
