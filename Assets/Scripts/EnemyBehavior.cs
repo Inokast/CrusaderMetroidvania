@@ -6,7 +6,7 @@ using UnityEngine.AI;
 //Assignment/Lab/Project: Metroidvania
 //Name: Talyn Epting
 
-public enum State { idle, chasing, attacking, fleeing };
+public enum State { idle, chasing, attacking };
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -69,31 +69,25 @@ public class EnemyBehavior : MonoBehaviour
                 Debug.Log("error in switch statement for Enemy SetState");
                 break;
         }
+        StopCoroutine(SetState());
     }
 
     IEnumerator SetState()
     {
-        while (true)
-        {
-            if (distanceToPlayer < idleRange && distanceToPlayer >= chaseRange)
-            {
-                currentState = State.chasing;
-            }
-            else
-            {
-                currentState = State.idle;
-            }
-
-            yield return new WaitForSeconds(.1f);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if(col.gameObject.CompareTag("Player"))
+        if (distanceToPlayer < chaseRange && distanceToPlayer >= attackRange)
         {
             currentState = State.attacking;
         }
+        else if (distanceToPlayer < idleRange && distanceToPlayer >= chaseRange)
+        {
+            currentState = State.chasing;
+        }
+        else
+        {
+            currentState = State.idle;
+        }
+
+        yield return new WaitForSeconds(.1f);
     }
 
     void ChasePlayer()
