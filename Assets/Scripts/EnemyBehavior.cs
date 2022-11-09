@@ -74,20 +74,23 @@ public class EnemyBehavior : MonoBehaviour
 
     IEnumerator SetState()
     {
-        if (distanceToPlayer < chaseRange && distanceToPlayer >= attackRange)
+        while (true)
         {
-            currentState = State.attacking;
-        }
-        else if (distanceToPlayer < idleRange && distanceToPlayer >= chaseRange)
-        {
-            currentState = State.chasing;
-        }
-        else
-        {
-            currentState = State.idle;
-        }
+            if (distanceToPlayer == attackRange)
+            {
+                currentState = State.attacking;
+            }
+            else if (distanceToPlayer < idleRange && distanceToPlayer >= chaseRange)
+            {
+                currentState = State.chasing;
+            }
+            else
+            {
+                currentState = State.idle;
+            }
 
-        yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.1f);
+        }
     }
 
     void ChasePlayer()

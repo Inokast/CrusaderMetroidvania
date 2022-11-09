@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 //////////////////////////////////////////////
 //Assignment/Lab/Project: Metroidvania
@@ -12,6 +14,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager gm;
+
+    [Header("UI Values")]       //I figure the game manager can jsut directly handle UI this time?- T.E.
+    TextMeshProUGUI scoreText;
+    public GameObject optionsPanel, quitPanel;
+
+
+    void Awake()
+    {
+        if(gm == null)
+        {
+            gm = this;
+        }
+    }
+
     void Start()
     {
         
@@ -21,4 +38,40 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    //buttons here
+    #region buttons
+    public void OnPlayClick()
+    {
+        SceneManager.LoadScene("TestLevel");
+        Debug.Log("started game");
+    }
+
+    public void OnQuitClick()
+    {
+        quitPanel?.SetActive(true);
+    }
+
+    public void YesQuit()
+    {
+        Application.Quit();
+        Debug.Log("quit game");
+    }
+
+    public void NoQuit()
+    {
+        quitPanel?.SetActive(false);
+        Debug.Log("did not quit game");
+    }
+
+    public void OnOptionsClick()
+    {
+        optionsPanel?.SetActive(true);
+    }
+
+    public void OnCloseClick()
+    {
+        optionsPanel?.SetActive(false);
+    }
+    #endregion
 }
