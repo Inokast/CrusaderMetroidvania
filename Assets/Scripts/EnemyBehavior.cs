@@ -14,23 +14,12 @@ public class EnemyBehavior : MonoBehaviour
     GameObject player;
     State currentState;
     Rigidbody2D rb;
-    [SerializeField] int health;
     [SerializeField] float speed;
     float distanceToPlayer;
     [SerializeField] float idleRange, chaseRange, attackRange;
 
-    public int Health
-    {
-        get { return health; }
-        set 
-        { 
-            health = value;
-            if(health < 0)
-            {
-                health = 0;
-            }
-        }
-    }
+    Health enemyHealth = new Health();
+        
 
     void Start()
     {

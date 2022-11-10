@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
 
-    [Header("UI Values")]       //I figure the game manager can jsut directly handle UI this time?- T.E.
+    [Header("UI Values")]       //I figure the game manager can just directly handle UI this time?- T.E.
     TextMeshProUGUI scoreText;
     public GameObject optionsPanel, quitPanel;
 
