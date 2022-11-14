@@ -31,7 +31,10 @@ public class ElevatorBehavior : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(atA)
+            if (atA)
+            {
+
+            }
         }
     }
 }
