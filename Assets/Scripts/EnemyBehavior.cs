@@ -11,6 +11,7 @@ public class EnemyBehavior : MonoBehaviour
 {
     [Header("Behavior Values")]
     GameObject player;
+    [SerializeField] Collider2D weapon;
     State currentState;
     Rigidbody2D rb;
     [SerializeField] float speed;
@@ -33,6 +34,7 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         currentState = State.idle;
         rb = GetComponent<Rigidbody2D>();
+        weapon.enabled = false;
 
         StartCoroutine(SetState());
     }
@@ -88,6 +90,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             case State.idle:
                 anim.SetBool("doWalking", false);
+                weapon.enabled = false;
                 Debug.Log("enemy is idle");
                 break;
             case State.chasing:
@@ -124,6 +127,7 @@ public class EnemyBehavior : MonoBehaviour
     void ChasePlayer()
     {
         anim.SetBool("doWalking", true); anim.SetBool("doAttack", false);
+        weapon.enabled = false;
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         Debug.Log("Chasing player");
     }
@@ -132,6 +136,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         anim.SetBool("doWalking", false); anim.SetBool("doAttack", true);
         rb.velocity = Vector2.zero;
+        weapon.enabled = true;
         Debug.Log("Attacking player");
     }
 

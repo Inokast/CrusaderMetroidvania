@@ -433,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1064d12fdd42def4c951f10d9bf1b82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 1162125675}
   speed: 3
   chaseRange: 8
   attackRange: 1
@@ -870,7 +871,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.036409616, y: -0.05016029}
+  m_Offset: {x: -0.05198455, y: -0.05016029}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -881,7 +882,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.1168275, y: 2.772329}
+  m_Size: {x: 5.7786355, y: 2.772329}
   m_EdgeRadius: 0
 --- !u!1 &1341803339
 GameObject:
