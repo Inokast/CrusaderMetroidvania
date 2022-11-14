@@ -17,9 +17,16 @@ public class EnemyBehavior : MonoBehaviour
     float distanceToPlayer;
     [SerializeField] float chaseRange, attackRange;
     bool rightFacing = true;
+    Animator anim;
 
-    Health enemyHealth = new Health();
-        
+    [Header("Health Values")]
+    [SerializeField] float enemyHealth;
+
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -33,7 +40,7 @@ public class EnemyBehavior : MonoBehaviour
     void Update()
     {
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(currentState);
+        Debug.Log($"Enemy health: {enemyHealth}");
     }
 
     void FixedUpdate()
@@ -47,6 +54,14 @@ public class EnemyBehavior : MonoBehaviour
         else if (rightFacing && player.transform.position.x > transform.position.x)
         {
             FlipSprite();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            DamageEnemy(10);
         }
     }
 
@@ -66,11 +81,13 @@ public class EnemyBehavior : MonoBehaviour
         transform.localScale = scaler;
     }
 
+    #region state handling
     void HandleStates()
     {
         switch (currentState)
         {
             case State.idle:
+                anim.SetBool("doWalking", false);
                 Debug.Log("enemy is idle");
                 break;
             case State.chasing:
@@ -102,16 +119,29 @@ public class EnemyBehavior : MonoBehaviour
             yield return new WaitForSeconds(.1f);
         }
     }
+    #endregion
 
     void ChasePlayer()
     {
+        anim.SetBool("doWalking", true); anim.SetBool("doAttack", false);
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         Debug.Log("Chasing player");
     }
 
     void AttackPlayer()
     {
+        anim.SetBool("doWalking", false); anim.SetBool("doAttack", true);
         rb.velocity = Vector2.zero;
         Debug.Log("Attacking player");
+    }
+
+    void DamageEnemy(float amt)
+    {
+        enemyHealth -= amt;
+
+        if(enemyHealth <= 0)
+        {
+            //do death things here- T.E.
+        }
     }
 }
