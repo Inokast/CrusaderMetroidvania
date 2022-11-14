@@ -5,20 +5,22 @@ using UnityEngine;
 //Assignment/Lab/Project: Metroidvania
 //Name: Talyn Epting
 
-public enum State { idle, chasing, attacking };
+public enum State { idle, chasing, attacking, dead };
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [Header("Behavior Values")]
+    [Header("Objects")]
     GameObject player;
-    [SerializeField] Collider2D weapon;
-    State currentState;
     Rigidbody2D rb;
+    Animator anim;
+    [SerializeField] Collider2D weapon;
+
+    [Header("Behavior Values")]
+    State currentState;
     [SerializeField] float speed;
     float distanceToPlayer;
     [SerializeField] float chaseRange, attackRange;
-    bool rightFacing = true;
-    Animator anim;
+    bool rightFacing = true;    
 
     [Header("Health Values")]
     [SerializeField] float enemyHealth;
@@ -63,7 +65,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            DamageEnemy(10);
+            //DamageEnemy(10);
         }
     }
 
@@ -124,6 +126,7 @@ public class EnemyBehavior : MonoBehaviour
     }
     #endregion
 
+    #region actions
     void ChasePlayer()
     {
         anim.SetBool("doWalking", true); anim.SetBool("doAttack", false);
@@ -146,7 +149,13 @@ public class EnemyBehavior : MonoBehaviour
 
         if(enemyHealth <= 0)
         {
-            //do death things here- T.E.
+            Die();
         }
     }
+
+    void Die()
+    {
+        //do death things here- T.E.
+    }
+    #endregion
 }
