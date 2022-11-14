@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 //Assignment/Lab/Project: Metroidvania
 //Name: Talyn Epting
@@ -26,13 +25,13 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         currentState = State.idle;
         rb = GetComponent<Rigidbody2D>();
-        distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
         StartCoroutine(SetState());
     }
 
     void Update()
     {
+        distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         Debug.Log(currentState);
     }
 
