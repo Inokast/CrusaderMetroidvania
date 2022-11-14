@@ -16,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] float speed;
     float distanceToPlayer;
     [SerializeField] float chaseRange, attackRange;
+    bool rightFacing = true;
 
     Health enemyHealth = new Health();
         
@@ -38,6 +39,15 @@ public class EnemyBehavior : MonoBehaviour
     void FixedUpdate()
     {
         HandleStates();
+
+        if (!rightFacing && player.transform.position.x < transform.position.x)
+        {
+            FlipSprite();
+        }
+        else if (rightFacing && player.transform.position.x > transform.position.x)
+        {
+            FlipSprite();
+        }
     }
 
     void OnTriggerStay2D(Collider2D col)
@@ -46,6 +56,14 @@ public class EnemyBehavior : MonoBehaviour
         {
             currentState = State.attacking;
         }
+    }
+
+    void FlipSprite()
+    {
+        rightFacing = !rightFacing;
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
 
     void HandleStates()
