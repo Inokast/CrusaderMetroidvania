@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    
+    //Assignment/Lab/Project: Metroidvania
+    //Name: Dan Sanchez
+
     private Animator anim;
     private PlayerMovement move;
     private PlayerCollision col;

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/// <summary>
-/// Dan Sanchez (Will add info later)
-/// </summary>
+//Assignment/Lab/Project: Metroidvania
+//Name: Dan Sanchez
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerCollision col;
@@ -124,8 +123,25 @@ public class PlayerMovement : MonoBehaviour
         
         Vector2 dir = new Vector2(x, y);
         Move(dir);
+       
+    }
 
-        
+    public void Launch(Vector2 direction) 
+    {
+        print("Launch function called");
+
+        rb.AddForce(direction * 10, ForceMode2D.Impulse);
+
+        if (side == 1)
+        {
+            
+        }
+
+        else 
+        {
+            
+        }
+
     }
 
     private void Move(Vector2 dir)

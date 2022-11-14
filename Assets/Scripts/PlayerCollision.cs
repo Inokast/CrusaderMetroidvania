@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    //Assignment/Lab/Project: Metroidvania
+    //Name: Dan Sanchez
+
     // Start is called before the first frame update
     [Header("Layers")]
     public LayerMask groundLayer;
@@ -35,6 +38,20 @@ public class PlayerCollision : MonoBehaviour
         onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
 
         wallSide = onRightWall ? -1 : 1;
+    }
+
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Enemy")) 
+        {
+            //take damage
+            PlayerMovement player = gameObject.GetComponent<PlayerMovement>();
+            Vector3 colVector = col.gameObject.transform.position;
+            Vector3 temp = colVector - gameObject.transform.position;
+            Vector2 dir = new Vector2(temp.x, temp.y).normalized;
+            player.Launch(dir);
+            player.anim.SetTrigger("hurt");
+        }
     }
 
     void OnDrawGizmos()
