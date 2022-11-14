@@ -11,7 +11,7 @@ public class PlayerActions : MonoBehaviour
     public int attackPower = 3;
     public float actionCooldown = .5f;
 
-    public bool isAttacking;
+    public bool isAttacking = false;
 
     [Header("MagicStats")]
     public float magicPower = 3;
@@ -23,13 +23,15 @@ public class PlayerActions : MonoBehaviour
     void Start()
     {
         anim = GetComponentInChildren<PlayerAnimation>();
+        staffCol.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("0")) 
+        if (Input.GetKeyDown("p")) 
         {
+            print("Pressed P");
             Attack();
         }
 
@@ -51,13 +53,27 @@ public class PlayerActions : MonoBehaviour
 
     private void Attack() 
     {
-        if (isAttacking!) 
+        print("Attack is called");
+        if (isAttacking == false) 
         {
+            print("Attack is playing");
             isAttacking = true;
             anim.SetTrigger("attack");
+            StartCoroutine(AttackCooldown());
+        }     
+    }
+
+    private void ToggleStaffHitbox() 
+    {
+        if (staffCol.enabled == false)
+        {
+            staffCol.enabled = true;
         }
-        
-        
+
+        else if (staffCol.enabled == true) 
+        {
+            staffCol.enabled = false;
+        }
     }
 
     IEnumerator AttackCooldown() 

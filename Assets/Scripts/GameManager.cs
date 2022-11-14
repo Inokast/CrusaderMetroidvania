@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     TextMeshProUGUI scoreText;
     public GameObject optionsPanel, quitPanel;
 
+    [Header("In-game Values")]
+    int score;
+
 
     void Awake()
     {
