@@ -15,7 +15,7 @@ public class EnemyBehavior : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] float speed;
     float distanceToPlayer;
-    [SerializeField] float idleRange, chaseRange, attackRange;
+    [SerializeField] float chaseRange, attackRange;
 
     Health enemyHealth = new Health();
         
@@ -38,6 +38,14 @@ public class EnemyBehavior : MonoBehaviour
     void FixedUpdate()
     {
         HandleStates();
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            currentState = State.attacking;
+        }
     }
 
     void HandleStates()
@@ -64,11 +72,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         while (true)
         {
-            if (distanceToPlayer == attackRange)
-            {
-                currentState = State.attacking;
-            }
-            else if (distanceToPlayer < idleRange && distanceToPlayer >= chaseRange)
+            if (distanceToPlayer <= chaseRange && distanceToPlayer >= attackRange)
             {
                 currentState = State.chasing;
             }
