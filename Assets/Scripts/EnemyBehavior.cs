@@ -17,10 +17,10 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("Behavior Values")]
     State currentState;
-    [SerializeField] float speed;
     float distanceToPlayer;
-    [SerializeField] float chaseRange, attackRange;
-    bool rightFacing = true;    
+    bool rightFacing = true;
+    [SerializeField] float speed;
+    [SerializeField] float chaseRange;
 
     [Header("Health Values")]
     [SerializeField] float enemyHealth;
@@ -44,7 +44,7 @@ public class EnemyBehavior : MonoBehaviour
     void Update()
     {
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log($"Enemy health: {enemyHealth}");
+        Debug.Log($"Enemy health: {enemyHealth}; current state is: {currentState}");
     }
 
     void FixedUpdate()
@@ -93,7 +93,6 @@ public class EnemyBehavior : MonoBehaviour
             case State.idle:
                 anim.SetBool("doWalking", false);
                 weapon.enabled = false;
-                Debug.Log("enemy is idle");
                 break;
             case State.chasing:
                 ChasePlayer();
@@ -102,7 +101,7 @@ public class EnemyBehavior : MonoBehaviour
                 AttackPlayer();
                 break;
             default:
-                Debug.Log("error in switch statement for Enemy SetState");
+                Debug.LogError("error in switch statement for Enemy SetState");
                 break;
         }
         StopCoroutine(SetState());
@@ -112,7 +111,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         while (true)
         {
-            if (distanceToPlayer <= chaseRange && distanceToPlayer >= attackRange)
+            if (distanceToPlayer <= chaseRange)
             {
                 currentState = State.chasing;
             }
@@ -132,7 +131,6 @@ public class EnemyBehavior : MonoBehaviour
         anim.SetBool("doWalking", true); anim.SetBool("doAttack", false);
         weapon.enabled = false;
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        Debug.Log("Chasing player");
     }
 
     void AttackPlayer()
@@ -140,7 +138,6 @@ public class EnemyBehavior : MonoBehaviour
         anim.SetBool("doWalking", false); anim.SetBool("doAttack", true);
         rb.velocity = Vector2.zero;
         weapon.enabled = true;
-        Debug.Log("Attacking player");
     }
 
     void DamageEnemy(float amt)
