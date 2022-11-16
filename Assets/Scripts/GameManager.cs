@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [Header("In-game Values")]
     int score;
 
+    string previousScene = null;
+    private GameObject playerSpawner;
+
 
     void Awake()
     {
@@ -34,7 +37,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner");
+        CallPlayerSpawner(previousScene);
     }
 
     void Update()
@@ -77,4 +81,14 @@ public class GameManager : MonoBehaviour
         optionsPanel?.SetActive(false);
     }
     #endregion
+
+    public void SetPreviousScene(string preScene)
+    {
+        previousScene = preScene;
+    }
+
+    private void CallPlayerSpawner(string lastScene)
+    {
+        playerSpawner.GetComponent<PlayerSpawnBehavior>().PlacePlayer(lastScene);
+    }
 }
