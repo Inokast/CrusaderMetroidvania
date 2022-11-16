@@ -7,7 +7,9 @@ public class PlayerCollision : MonoBehaviour
     //Assignment/Lab/Project: Metroidvania
     //Name: Dan Sanchez
 
-    // Start is called before the first frame update
+    private PlayerMovement playerMove;
+    private PlayerActions playerAct;
+
     [Header("Layers")]
     public LayerMask groundLayer;
 
@@ -23,10 +25,14 @@ public class PlayerCollision : MonoBehaviour
 
     public float collisionRadius = 0.25f;
     public Vector2 bottomOffset, rightOffset, leftOffset;
-    
+
 
     // Start is called before the first frame update
-
+    private void Start()
+    {
+        playerMove = gameObject.GetComponent<PlayerMovement>();
+        playerAct = gameObject.GetComponent<PlayerActions>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -45,12 +51,20 @@ public class PlayerCollision : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy")) 
         {
             //take damage
-            PlayerMovement player = gameObject.GetComponent<PlayerMovement>();
+            playerMove = gameObject.GetComponent<PlayerMovement>();
             Vector3 colVector = col.gameObject.transform.position;
             Vector3 temp = colVector - gameObject.transform.position;
             Vector2 dir = new Vector2(temp.x, temp.y).normalized;
-            player.Launch(dir);
-            player.anim.SetTrigger("hurt");
+            playerMove.Launch(dir);
+            playerMove.anim.SetTrigger("hurt");
+        }
+
+        if (col.gameObject.CompareTag("PotionM"))
+        {
+            print("Previous Magic charge = " + playerAct.magicCharge);
+            Destroy(col.gameObject);
+            playerAct.RefillMagicCharge(15f);
+            print("New Magic charge = " + playerAct.magicCharge);
         }
     }
 

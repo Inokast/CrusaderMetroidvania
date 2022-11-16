@@ -81,9 +81,10 @@ public class PlayerActions : MonoBehaviour
         }      
     }
 
-    public void FillMagicCharge() 
+    public void RefillMagicCharge(float amount) 
     {
-        magicCharge = maxMagicCharge;
+        magicCharge += amount;
+        magicCharge = Mathf.Clamp(magicCharge, 0, maxMagicCharge);
     }
 
     private void Attack() 
