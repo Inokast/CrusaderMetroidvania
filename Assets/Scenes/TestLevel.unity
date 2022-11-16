@@ -1825,7 +1825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2459199620098553256, guid: ed82b49a4a592b64dbb36b4279496d07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.3
+      value: 6.15
       objectReference: {fileID: 0}
     - target: {fileID: 2459199620098553256, guid: ed82b49a4a592b64dbb36b4279496d07, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2207,6 +2207,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3642745211280784806, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642745211280784806, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642745211280784806, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.76983
       objectReference: {fileID: 0}
@@ -2260,6 +2268,10 @@ PrefabInstance:
     - target: {fileID: 1797043687802833054, guid: 60eee615742ac3b47ab0853f68c00f32, type: 3}
       propertyPath: m_Name
       value: Smushroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797043687802833054, guid: 60eee615742ac3b47ab0853f68c00f32, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5272981748451711482, guid: 60eee615742ac3b47ab0853f68c00f32, type: 3}
       propertyPath: m_RootOrder
@@ -2320,13 +2332,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gooblin
       objectReference: {fileID: 0}
+    - target: {fileID: 2284663747187551634, guid: 6de69d91e45b4344bbdce7d42a1794c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7889676387765928739, guid: 6de69d91e45b4344bbdce7d42a1794c5, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7889676387765928739, guid: 6de69d91e45b4344bbdce7d42a1794c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41.43
+      value: 42.9
       objectReference: {fileID: 0}
     - target: {fileID: 7889676387765928739, guid: 6de69d91e45b4344bbdce7d42a1794c5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2381,7 +2397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4525338392740970273, guid: db433ca3eef9ddc4f8e1e0e3324f5531, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.7
+      value: 23.44
       objectReference: {fileID: 0}
     - target: {fileID: 4525338392740970273, guid: db433ca3eef9ddc4f8e1e0e3324f5531, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2422,6 +2438,10 @@ PrefabInstance:
     - target: {fileID: 7676079481571979168, guid: db433ca3eef9ddc4f8e1e0e3324f5531, type: 3}
       propertyPath: m_Name
       value: Fleyeball
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676079481571979168, guid: db433ca3eef9ddc4f8e1e0e3324f5531, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

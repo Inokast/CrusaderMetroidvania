@@ -63,9 +63,10 @@ public class EnemyBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Projectile/Player"))     //may be contrasted with "Projectile/Enemy" in future installments...- T.E.
         {
-            //DamageEnemy(10);
+            Destroy(col.gameObject);
+            DamageEnemy(col.gameObject.GetComponent<Projectile>().power);
         }
     }
 
@@ -142,6 +143,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void DamageEnemy(float amt)
     {
+        anim.SetTrigger("isHit");
         enemyHealth -= amt;
 
         if(enemyHealth <= 0)
