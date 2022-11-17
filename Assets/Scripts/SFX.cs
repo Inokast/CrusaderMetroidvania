@@ -14,20 +14,20 @@ public class SFX : MonoBehaviour
 
     void Awake()
     {
-        if(sfx == null)
+        if (sfx == null)
         {
             sfx = this;
         }
     }
 
-    void Start()
-    {
-        
-    }
-
     public void PlaySound(int s)
     {
-        //method for playing various sfx in games, to be filled out later- T.E.
-        
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (s == i)
+            {
+                sounds[i].Play();
+            }
+        }
     }
 }

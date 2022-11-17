@@ -139,6 +139,7 @@ public class EnemyBehavior : MonoBehaviour
         anim.SetBool("doWalking", false); anim.SetBool("doAttack", true);
         rb.velocity = Vector2.zero;
         weapon.enabled = true;
+        SFX.sfx.PlaySound(1);
     }
 
     void DamageEnemy(float amt)
