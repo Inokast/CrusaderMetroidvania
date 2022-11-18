@@ -139,7 +139,19 @@ public class EnemyBehavior : MonoBehaviour
         anim.SetBool("doWalking", false); anim.SetBool("doAttack", true);
         rb.velocity = Vector2.zero;
         weapon.enabled = true;
-        SFX.sfx.PlaySound(1);
+    }
+
+    //for event trigger in animation
+    void AttackSound(int s) 
+    { 
+        if(s == 0)
+        {
+            SFX.sfx.PlaySound(1);
+        }
+        if (s == 1)
+        {
+            SFX.sfx.PlaySound(2);
+        }
     }
 
     void DamageEnemy(float amt)
