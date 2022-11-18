@@ -20,7 +20,18 @@ public class SFX : MonoBehaviour
         }
     }
 
-    public void PlaySound(int s)
+    public void PlayGameSound(int s)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (s == i)
+            {
+                sounds[i].Play();
+            }
+        }
+    }
+
+    public void PlayUISound(int s)
     {
         for (int i = 0; i < sounds.Length; i++)
         {

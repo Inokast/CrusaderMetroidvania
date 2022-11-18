@@ -144,13 +144,13 @@ public class EnemyBehavior : MonoBehaviour
     //for event trigger in animation
     void AttackSound(int s) 
     { 
-        if(s == 0)
+        if (s == 0)
         {
-            SFX.sfx.PlaySound(1);
+            SFX.sfx.PlayGameSound(1);
         }
         if (s == 1)
         {
-            SFX.sfx.PlaySound(2);
+            SFX.sfx.PlayGameSound(2);
         }
     }
 

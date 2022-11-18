@@ -18,10 +18,16 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Values")]       //I figure the game manager can just directly handle UI this time?- T.E.
     TextMeshProUGUI scoreText;
-    public GameObject optionsPanel, quitPanel;
+    public GameObject optionsPanel, helpPanel, quitPanel;
 
     [Header("In-game Values")]
     int score;
+
+    public int Score
+    {
+        get { return score; }
+        set { score = value; }
+    }
 
     string previousScene = null;
     private GameObject playerSpawner;
@@ -79,6 +85,17 @@ public class GameManager : MonoBehaviour
     public void OnCloseClick()
     {
         optionsPanel?.SetActive(false);
+    }
+
+    //for the help event trigger in options panel
+    public void OnHelpMouseOver()
+    {
+        helpPanel?.SetActive(true);
+    }
+
+    public void OnHelpMouseAway()
+    {
+        helpPanel?.SetActive(false);
     }
     #endregion
 

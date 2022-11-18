@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (col.onGround == true) 
             {
-                SFX.sfx.PlaySound(0);       //jump sfx- T.E.
+                SFX.sfx.PlayGameSound(0);       //jump sfx- T.E.
                 Jump(Vector2.up);
             }
 
