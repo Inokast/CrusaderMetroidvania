@@ -10,6 +10,8 @@ public class SFX : MonoBehaviour
     public static SFX sfx;
 
     [SerializeField] AudioSource[] sounds;
+    [SerializeField] AudioSource clipSFX;
+    [SerializeField] AudioClip[] clips;
 
 
     void Awake()
@@ -26,18 +28,18 @@ public class SFX : MonoBehaviour
         {
             if (s == i)
             {
-                sounds[i].Play();
+                sounds[s].Play();
             }
         }
     }
 
     public void PlayUISound(int s)
     {
-        for (int i = 0; i < sounds.Length; i++)
+        for (int i = 0; i < clips.Length; i++)
         {
             if (s == i)
             {
-                sounds[i].Play();
+                clipSFX.PlayOneShot(clips[s]);
             }
         }
     }
