@@ -21,6 +21,7 @@ using UnityEngine.SceneManagement;
 public class LoadNextLevel : MonoBehaviour
 {
     [SerializeField] string nextLevelName = "";
+    GameManager gm;
 
     //This script tells the gamemanager which level the player is leaving and to load the next
 
