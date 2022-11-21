@@ -9,6 +9,7 @@ public class PlayerActions : MonoBehaviour
 
     [Header("Spell Prefabs")]
     [SerializeField] private GameObject shootPrefab;
+    [SerializeField] private GameObject shadowHandPrefab;
 
     [Header("AttackStats")]
     public int attackPower = 3;
@@ -42,6 +43,11 @@ public class PlayerActions : MonoBehaviour
         {
             CastShoot();
         }
+
+        if (Input.GetKeyDown("2"))
+        {
+            CastShadowHand();
+        }
     }
 
     private void CastShoot() 
@@ -56,14 +62,13 @@ public class PlayerActions : MonoBehaviour
 
             if (player.side == 1)
             {
-                temp = new Vector2(transform.position.x + 2, transform.position.y + 2);
+                temp = new Vector2(transform.position.x + 2, transform.position.y + 1);
                 crystal = Instantiate(shootPrefab, temp, shootPrefab.transform.rotation);
             }
 
             else
             {
-                print("Side --");
-                temp = new Vector2(transform.position.x - 2, transform.position.y + 2);
+                temp = new Vector2(transform.position.x - 2, transform.position.y + 1);
                 crystal = Instantiate(shootPrefab, temp, shootPrefab.transform.rotation);
                 crystal.transform.Rotate(-180, 0, 0);
             }
@@ -72,13 +77,42 @@ public class PlayerActions : MonoBehaviour
             Projectile p = crystal.GetComponent<Projectile>();
             p.power = magicPower;
             Rigidbody2D rb = crystal.GetComponent<Rigidbody2D>();
-            print("crystal is made");
 
             Vector2 force = transform.right * 20;
 
             rb.AddForce(force, ForceMode2D.Impulse);
             StartCoroutine(AttackCooldown());
         }      
+    }
+
+    private void CastShadowHand()
+    {
+        if (isAttacking == false && magicCharge >= 5)
+        {
+            isAttacking = true;
+            magicCharge -= 5;
+            PlayerMovement player = GetComponent<PlayerMovement>();
+            Vector2 temp;
+            GameObject hand;
+
+            if (player.side == 1)
+            {
+                temp = new Vector2(transform.position.x + 1, transform.position.y - .1f);
+                hand = Instantiate(shadowHandPrefab, temp, shadowHandPrefab.transform.rotation);
+            }
+
+            else
+            {
+                temp = new Vector2(transform.position.x - 1, transform.position.y - .1f);
+                hand = Instantiate(shadowHandPrefab, temp, shadowHandPrefab.transform.rotation);
+            }
+
+
+            Projectile p = hand.GetComponent<Projectile>();
+            p.power = magicPower * 2;
+
+            StartCoroutine(AttackCooldown());
+        }
     }
 
     public void RefillMagicCharge(float amount) 
@@ -91,7 +125,6 @@ public class PlayerActions : MonoBehaviour
     {
         if (isAttacking == false) 
         {
-            print("Attack is playing");
             isAttacking = true;
             anim.SetTrigger("attack");
             StartCoroutine(AttackCooldown());

@@ -44,7 +44,7 @@ public class EnemyBehavior : MonoBehaviour
     void Update()
     {
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log($"Enemy health: {enemyHealth}; current state is: {currentState}");
+        //Debug.Log($"Enemy health: {enemyHealth}; current state is: {currentState}"); //Deactivated for testing purposes -Dan
     }
 
     void FixedUpdate()

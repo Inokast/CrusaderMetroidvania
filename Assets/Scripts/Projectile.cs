@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] float destroyTime = 5;
+    [SerializeField] float destroyTime = 5f;
     public int power = 1;
+    public bool destroyOnImpact = true;
     void Awake()
     {
         StartCoroutine(DestroySelf(destroyTime));   
@@ -13,12 +14,17 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        StopAllCoroutines();
-        Destroy(gameObject);
+        if (destroyOnImpact == true) 
+        {
+            StopAllCoroutines();
+            Destroy(gameObject);
+        }
+        
     }
 
     IEnumerator  DestroySelf(float time) 
     {
         yield return new WaitForSeconds(time);
+        Destroy(gameObject);
     }
 }

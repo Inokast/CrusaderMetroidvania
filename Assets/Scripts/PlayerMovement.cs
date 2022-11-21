@@ -81,12 +81,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 //SFX.sfx.PlayGameSound(0);       //jump sfx- T.E.
                 Jump(Vector2.up);
+
+                
+                //SFX.sfx.PlayGameSound(0);       //jump sfx- T.E.
+                Jump(Vector2.up);
             }
 
-            if (col.onWall && !col.onGround) 
-            {
-                WallJump();
-            }
         }
 
         if (Input.GetButtonDown("Jump") && !hasDashed && col.onGround == false)

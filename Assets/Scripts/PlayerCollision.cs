@@ -68,6 +68,22 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "ShadowHand" & playerMove.jumpForce != 30) 
+        {
+            playerMove.jumpForce = 30;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "ShadowHand" & playerMove.jumpForce == 30)
+        {
+            playerMove.jumpForce = 15;
+        }
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
