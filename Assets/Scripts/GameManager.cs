@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [Header("UI Values")]       //I figure the game manager can just directly handle UI this time?- T.E.
     TextMeshProUGUI scoreText;
     public GameObject optionsPanel, helpPanel, quitPanel;
+    public GameObject dialogueDisplay;   //dialogueDisplay is meant for the trigger which the player encounters to fire off dialogue snippits
+    public GameObject[] alert;    //alert is the space for actual alert strings (scriptable objects?)
 
     [Header("In-game Values")]
     int score;
