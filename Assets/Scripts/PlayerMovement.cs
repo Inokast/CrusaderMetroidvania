@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public float lowFallMultiplier = 2f;
     public float wallSlideSpeed = 5;
     public float wallJumpLerp = 10;
+    public float dashSpeed = 20;
 
     private float x;
     private float y;
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool groundTouch;
     private bool hasDashed;
+    private bool isDashing;
 
     public int side = 1; // Used to check which direction player is facing.
 
@@ -56,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 
+        float xRaw = Input.GetAxisRaw("Horizontal");
+        float yRaw = Input.GetAxisRaw("Vertical");
+
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
         if (rb.velocity.y < 0 && fallMultiplierEnabled == true) 
@@ -74,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (col.onGround == true) 
             {
-                SFX.sfx.PlayGameSound(0);       //jump sfx- T.E.
+                //SFX.sfx.PlayGameSound(0);       //jump sfx- T.E.
                 Jump(Vector2.up);
             }
 
@@ -84,10 +89,19 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (Input.GetButtonDown("Jump") && !hasDashed && col.onGround == false)
+        {
+            if (xRaw != 0 || yRaw != 0) 
+            {
+                Dash(xRaw, yRaw);
+            }        
+        }
+
         if (col.onGround)
         {
             wallJumped = false;
             wallSlide = false;
+            hasDashed = false;
         }
 
         if (col.onWall && !col.onGround)
@@ -119,6 +133,33 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void Dash(float x, float y)
+    {
+        if (hasDashed == false) 
+        {
+            hasDashed = true;
+
+            rb.velocity = Vector2.zero;
+            Vector2 dir = new Vector2(x, y);
+
+            rb.velocity += dir.normalized * dashSpeed;
+            StartCoroutine(DashCooldown());
+        }   
+    }
+
+    IEnumerator DashCooldown() 
+    {
+        rb.gravityScale = 0;
+        fallMultiplierEnabled = false;
+        isDashing = true;
+
+        yield return new WaitForSeconds(.3f);
+
+        rb.gravityScale = 3;
+        fallMultiplierEnabled = true;
+        isDashing = false;
+    }
+
     private void FixedUpdate()
     {
         
@@ -132,16 +173,6 @@ public class PlayerMovement : MonoBehaviour
         print("Launch function called");
 
         rb.AddForce(direction * 10, ForceMode2D.Impulse);
-
-        if (side == 1)
-        {
-            
-        }
-
-        else 
-        {
-            
-        }
 
     }
 
@@ -169,8 +200,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((side == 1 && col.onRightWall) || side == -1 && !col.onRightWall)
         {
-            side *= -1;
-            
+            side *= -1;    
         }
 
         StopCoroutine(DisableMovement(0));
