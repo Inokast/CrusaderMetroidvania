@@ -45,10 +45,23 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //On start find the player spawn manager.
         playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner");
-        CallPlayerSpawner(previousScene);
+
+<<<<<<< Updated upstream
+=======
+        //GameManager calls the Player Spawn Manager to spawn the player at the correct spawn point
+        try
+        {
+            CallPlayerSpawner(previousScene);
+        }
+        catch
+        {
+
+        }
     }
 
+>>>>>>> Stashed changes
     //buttons here
     #region buttons
     public void OnPlayClick()
@@ -96,6 +109,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    //Set Previous Scene is called by the LoadNextLevel class to set the scene that's being exited to keep the name
     public void SetPreviousScene(string preScene)
     {
         previousScene = preScene;
@@ -103,6 +117,7 @@ public class GameManager : MonoBehaviour
 
     private void CallPlayerSpawner(string lastScene)
     {
+        //Tells the PlayerSpawnManager to spawn the player
         playerSpawner.GetComponent<PlayerSpawnBehavior>().PlacePlayer(lastScene);
     }
 }
