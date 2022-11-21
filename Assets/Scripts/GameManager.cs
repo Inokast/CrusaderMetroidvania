@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if(gm == null)
+        if (gm == null)
         {
             gm = this;
         }
@@ -48,8 +48,6 @@ public class GameManager : MonoBehaviour
         //On start find the player spawn manager.
         playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner");
 
-<<<<<<< Updated upstream
-=======
         //GameManager calls the Player Spawn Manager to spawn the player at the correct spawn point
         try
         {
@@ -61,63 +59,62 @@ public class GameManager : MonoBehaviour
         }
     }
 
->>>>>>> Stashed changes
-    //buttons here
-    #region buttons
-    public void OnPlayClick()
-    {
-        SceneManager.LoadScene("TestLevel");
-        Debug.Log("started game");
-    }
+        //buttons here
+        #region buttons
+        public void OnPlayClick()
+        {
+            SceneManager.LoadScene("TestLevel");
+            Debug.Log("started game");
+        }
 
-    public void OnQuitClick()
-    {
-        quitPanel?.SetActive(true);
-    }
+        public void OnQuitClick()
+        {
+            quitPanel?.SetActive(true);
+        }
 
-    public void YesQuit()
-    {
-        Application.Quit();
-        Debug.Log("quit game");
-    }
+        public void YesQuit()
+        {
+            Application.Quit();
+            Debug.Log("quit game");
+        }
 
-    public void NoQuit()
-    {
-        quitPanel?.SetActive(false);
-        Debug.Log("did not quit game");
-    }
+        public void NoQuit()
+        {
+            quitPanel?.SetActive(false);
+            Debug.Log("did not quit game");
+        }
 
-    public void OnOptionsClick()
-    {
-        optionsPanel?.SetActive(true);
-    }
+        public void OnOptionsClick()
+        {
+            optionsPanel?.SetActive(true);
+        }
 
-    public void OnCloseClick()
-    {
-        optionsPanel?.SetActive(false);
-    }
+        public void OnCloseClick()
+        {
+            optionsPanel?.SetActive(false);
+        }
 
-    //for the help event trigger in options panel
-    public void OnHelpMouseOver()
-    {
-        helpPanel?.SetActive(true);
-    }
+        //for the help event trigger in options panel
+        public void OnHelpMouseOver()
+        {
+            helpPanel?.SetActive(true);
+        }
 
-    public void OnHelpMouseAway()
-    {
-        helpPanel?.SetActive(false);
-    }
-    #endregion
+        public void OnHelpMouseAway()
+        {
+            helpPanel?.SetActive(false);
+        }
+        #endregion
 
-    //Set Previous Scene is called by the LoadNextLevel class to set the scene that's being exited to keep the name
-    public void SetPreviousScene(string preScene)
-    {
-        previousScene = preScene;
-    }
+        //Set Previous Scene is called by the LoadNextLevel class to set the scene that's being exited to keep the name
+        public void SetPreviousScene(string preScene)
+        {
+            previousScene = preScene;
+        }
 
-    private void CallPlayerSpawner(string lastScene)
-    {
-        //Tells the PlayerSpawnManager to spawn the player
-        playerSpawner.GetComponent<PlayerSpawnBehavior>().PlacePlayer(lastScene);
-    }
+        private void CallPlayerSpawner(string lastScene)
+        {
+            //Tells the PlayerSpawnManager to spawn the player
+            playerSpawner.GetComponent<PlayerSpawnBehavior>().PlacePlayer(lastScene);
+        }
 }
