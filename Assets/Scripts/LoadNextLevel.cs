@@ -11,30 +11,31 @@ using UnityEngine.SceneManagement;
 //Date: 11/7/2022
 /////////////////////////////////////////////
 
+/* How to Use
+ * 
+ * Place this script on an empty object with a 2D box collider that covers the entrance/exit.
+ * In the object inspector type the name of the level in the "Next Level Name" area
+ * 
+ */
+
 public class LoadNextLevel : MonoBehaviour
 {
     [SerializeField] string nextLevelName = "";
-    [SerializeField] GameManager gm;
+    GameManager gm;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //This script tells the gamemanager which level the player is leaving and to load the next
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        //Is the collision the player
         if (collision.gameObject.CompareTag("Player"))
         {
+            //Try/Catch to prevent crash
             try
             {
+                //Tell GameManager the name of the level being exited
                 gm.SetPreviousScene(SceneManager.GetActiveScene().name);
+                //Loads the next scene
                 SceneManager.LoadScene(nextLevelName);
             }
             catch
