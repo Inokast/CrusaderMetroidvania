@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     TextMeshProUGUI scoreText;
     public GameObject optionsPanel, helpPanel, quitPanel;
     public GameObject dialogueDisplay;   //dialogueDisplay is meant for the trigger which the player encounters to fire off dialogue snippits
-    public GameObject[] alert;    //alert is the space for actual alert strings (scriptable objects?)
+    public TextMeshProUGUI[] alert;    //alert is the space for actual alert strings (scriptable objects?)
 
     [Header("In-game Values")]
     int score;
@@ -47,11 +47,6 @@ public class GameManager : MonoBehaviour
     {
         playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner");
         CallPlayerSpawner(previousScene);
-    }
-
-    void Update()
-    {
-        
     }
 
     //buttons here
