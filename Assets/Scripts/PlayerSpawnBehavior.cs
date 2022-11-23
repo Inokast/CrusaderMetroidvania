@@ -22,7 +22,6 @@ using UnityEngine;
 
 public class PlayerSpawnBehavior : MonoBehaviour
 {
-    [SerializeField] GameManager gm;
     [SerializeField] GameObject player;
 
     //This Script is called by the GameManager script to place the player at a point relative to the previous level.

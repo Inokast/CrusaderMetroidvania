@@ -14,6 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     [SerializeField] Collider2D weapon;
+    EnemyBehavior brain;
 
     [Header("Behavior Values")]
     State currentState;
@@ -29,6 +30,7 @@ public class EnemyBehavior : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
+        brain = GetComponent<EnemyBehavior>();
     }
 
     void Start()
@@ -159,8 +161,9 @@ public class EnemyBehavior : MonoBehaviour
         anim.SetTrigger("isHit");
         enemyHealth -= amt;
 
-        if(enemyHealth <= 0)
+        if (enemyHealth <= 0)
         {
+            enemyHealth = 0;
             Die();
         }
     }
@@ -168,6 +171,8 @@ public class EnemyBehavior : MonoBehaviour
     void Die()
     {
         //do death things here- T.E.
+        anim.SetTrigger("isDead");
+        brain.enabled = false;
     }
     #endregion
 }
