@@ -159,6 +159,7 @@ public class EnemyBehavior : MonoBehaviour
     void DamageEnemy(float amt)
     {
         anim.SetTrigger("isHit");
+        SFX.sfx.PlayGameSound(3);
         enemyHealth -= amt;
 
         if (enemyHealth <= 0)

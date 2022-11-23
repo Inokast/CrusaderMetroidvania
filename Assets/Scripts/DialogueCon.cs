@@ -34,5 +34,6 @@ public class DialogueCon : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         GameManager.gm.dialogueDisplay.SetActive(false);
         GameManager.gm.alert[0].text = "";
+        gameObject.SetActive(false);    //in case these are for one-time use only- T.E.
     }
 }

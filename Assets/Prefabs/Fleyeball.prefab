@@ -151,7 +151,7 @@ MonoBehaviour:
   weapon: {fileID: 5608850621663291318}
   speed: 4
   chaseRange: 9
-  enemyHealth: 80
+  enemyHealth: 20
 --- !u!1 &8172557503079996795
 GameObject:
   m_ObjectHideFlags: 0
