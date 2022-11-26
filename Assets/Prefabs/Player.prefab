@@ -127,6 +127,7 @@ MonoBehaviour:
   lowFallMultiplier: 2
   wallSlideSpeed: 3
   wallJumpLerp: 10
+  dashSpeed: 20
   canMove: 1
   wallJumped: 0
   wallSlide: 0
@@ -222,6 +223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staffCol: {fileID: 1998676009}
   shootPrefab: {fileID: 2280050596993450084, guid: 7841938f5decaf74096e55629553d6b8, type: 3}
+  shadowHandPrefab: {fileID: 4075020064323301744, guid: 13064032884e0c24d9e7f8a2c93163e2, type: 3}
+  health: 100
   attackPower: 3
   actionCooldown: 0.5
   isAttacking: 0

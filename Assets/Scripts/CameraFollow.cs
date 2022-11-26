@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] private float smoothSpeed;
-    private Vector3 offset = new Vector3(0,0,-10);
+    [SerializeField] Vector3 offset = new Vector3(0,0,-10);
 
     // Start is called before the first frame update
     void Start()

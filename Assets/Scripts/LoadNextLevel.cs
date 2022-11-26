@@ -21,8 +21,14 @@ using UnityEngine.SceneManagement;
 public class LoadNextLevel : MonoBehaviour
 {
     [SerializeField] string nextLevelName = "";
-    
+    private LevelTransitionScreen transition;
+
     //This script tells the gamemanager which level the player is leaving and to load the next
+
+    private void Start()
+    {
+        
+    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,12 +41,21 @@ public class LoadNextLevel : MonoBehaviour
                 //Tell GameManager the name of the level being exited
                 GameManager.gm.SetPreviousScene(SceneManager.GetActiveScene().name);
                 //Loads the next scene
-                SceneManager.LoadScene(nextLevelName);
+                StartCoroutine(LoadLevel());
             }
             catch
             {
                 Debug.Log(nextLevelName + " is not an available level, please make sure the scene name is correct.");
             }
         }
+    }
+
+    IEnumerator LoadLevel() 
+    {
+        transition.StartTransition();
+
+        yield return new WaitForSeconds(transition.transitionTime);
+        
+        SceneManager.LoadScene(nextLevelName);
     }
 }

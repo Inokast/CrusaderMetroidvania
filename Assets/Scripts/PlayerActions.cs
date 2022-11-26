@@ -11,6 +11,9 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private GameObject shootPrefab;
     [SerializeField] private GameObject shadowHandPrefab;
 
+    [Header("PlayerStats")]
+    public int health = 100;
+
     [Header("AttackStats")]
     public int attackPower = 3;
     public float actionCooldown = .5f;
