@@ -50,7 +50,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy")) 
         {
-            //take damage
+            playerAct.Death(1);
             playerMove = gameObject.GetComponent<PlayerMovement>();
             Vector3 colVector = col.gameObject.transform.position;
             Vector3 temp = colVector - gameObject.transform.position;

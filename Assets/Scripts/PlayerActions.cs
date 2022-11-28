@@ -28,6 +28,8 @@ public class PlayerActions : MonoBehaviour
     [Header("Checkpoint Location")]
     public Transform checkpoint;
 
+    private manaBar manaBar;
+    private HealthBarManager healthBar;
     //public string[] equippedSpells;
 
     // Start is called before the first frame update
@@ -36,8 +38,10 @@ public class PlayerActions : MonoBehaviour
         anim = GetComponentInChildren<PlayerAnimation>();
         staffCol.enabled = false;
         checkpoint = gameObject.transform;
+        manaBar = FindObjectOfType<manaBar>();
+        healthBar = FindObjectOfType<HealthBarManager>();
         HealthBarManager.hpbm.SetMaxHealth(health);
-        ManaBarManager.mabm.SetMaxMana((int)maxMagicCharge);
+        manaBar.SetMaxMana((int)maxMagicCharge);
     }
 
     // Update is called once per frame
@@ -92,7 +96,7 @@ public class PlayerActions : MonoBehaviour
 
             rb.AddForce(force, ForceMode2D.Impulse);
             StartCoroutine(AttackCooldown());
-            ManaBarManager.mabm.UpdateMana((int)magicCharge);
+            manaBar.mabm.UpdateMana((int)magicCharge);
         }      
     }
 
@@ -123,7 +127,7 @@ public class PlayerActions : MonoBehaviour
             p.power = magicPower * 2;
 
             StartCoroutine(AttackCooldown());
-            ManaBarManager.mabm.UpdateMana((int)magicCharge);
+            manaBar.UpdateMana((int)magicCharge);
         }
     }
 
@@ -131,7 +135,7 @@ public class PlayerActions : MonoBehaviour
     {
         magicCharge += amount;
         magicCharge = Mathf.Clamp(magicCharge, 0, maxMagicCharge);
-        ManaBarManager.mabm.UpdateMana((int)magicCharge);
+        manaBar.UpdateMana((int)magicCharge);
     }
 
     private void Attack() 
@@ -143,6 +147,7 @@ public class PlayerActions : MonoBehaviour
             StartCoroutine(AttackCooldown());
         }     
     }
+
 
     public void Death(int damage) 
     {
@@ -161,18 +166,18 @@ public class PlayerActions : MonoBehaviour
         gameObject.transform.position = checkpoint.position;
     }
 
-    ///private void ToggleStaffHitbox() 
-    ///{
-    ///    if (staffCol.enabled == false)
-    ///    {
-    ///        staffCol.enabled = true;
-    ///    }
-    ///
-    ///    else if (staffCol.enabled == true) 
-    ///    {
-    ///        staffCol.enabled = false;
-    ///    }
-    ///}
+    private void ToggleStaffHitbox() 
+    {
+        if (staffCol.enabled == false)
+        {
+            staffCol.enabled = true;
+        }
+    
+        else if (staffCol.enabled == true) 
+        {
+            staffCol.enabled = false;
+        }
+    }
 
     IEnumerator AttackCooldown() 
     {
