@@ -36,6 +36,8 @@ public class PlayerActions : MonoBehaviour
         anim = GetComponentInChildren<PlayerAnimation>();
         staffCol.enabled = false;
         checkpoint = gameObject.transform;
+        HealthBarManager.hpbm.SetMaxHealth(health);
+        ManaBarManager.mabm.SetMaxMana((int)maxMagicCharge);
     }
 
     // Update is called once per frame
@@ -90,6 +92,7 @@ public class PlayerActions : MonoBehaviour
 
             rb.AddForce(force, ForceMode2D.Impulse);
             StartCoroutine(AttackCooldown());
+            ManaBarManager.mabm.UpdateMana((int)magicCharge);
         }      
     }
 
@@ -120,6 +123,7 @@ public class PlayerActions : MonoBehaviour
             p.power = magicPower * 2;
 
             StartCoroutine(AttackCooldown());
+            ManaBarManager.mabm.UpdateMana((int)magicCharge);
         }
     }
 
@@ -127,6 +131,7 @@ public class PlayerActions : MonoBehaviour
     {
         magicCharge += amount;
         magicCharge = Mathf.Clamp(magicCharge, 0, maxMagicCharge);
+        ManaBarManager.mabm.UpdateMana((int)magicCharge);
     }
 
     private void Attack() 
@@ -142,6 +147,7 @@ public class PlayerActions : MonoBehaviour
     public void Death(int damage) 
     {
         health = health - damage;
+        HealthBarManager.hpbm.UpdateHealth(health);
         if (health <= 0)
         {
             //gameover
