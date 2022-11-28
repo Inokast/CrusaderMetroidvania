@@ -24,6 +24,10 @@ public class PlayerActions : MonoBehaviour
     public int magicPower = 3;
     public float maxMagicCharge = 100;
     public float magicCharge = 100;
+
+    [Header("Checkpoint Location")]
+    public Transform checkpoint;
+
     //public string[] equippedSpells;
 
     // Start is called before the first frame update
@@ -31,6 +35,7 @@ public class PlayerActions : MonoBehaviour
     {
         anim = GetComponentInChildren<PlayerAnimation>();
         staffCol.enabled = false;
+        checkpoint = gameObject.transform;
     }
 
     // Update is called once per frame
@@ -134,18 +139,34 @@ public class PlayerActions : MonoBehaviour
         }     
     }
 
-    private void ToggleStaffHitbox() 
+    public void Death(int damage) 
     {
-        if (staffCol.enabled == false)
+        health = health - damage;
+        if (health <= 0)
         {
-            staffCol.enabled = true;
+            //gameover
         }
 
-        else if (staffCol.enabled == true) 
-        {
-            staffCol.enabled = false;
-        }
+        else Respawn();
     }
+
+    public void Respawn() 
+    {
+        gameObject.transform.position = checkpoint.position;
+    }
+
+    ///private void ToggleStaffHitbox() 
+    ///{
+    ///    if (staffCol.enabled == false)
+    ///    {
+    ///        staffCol.enabled = true;
+    ///    }
+    ///
+    ///    else if (staffCol.enabled == true) 
+    ///    {
+    ///        staffCol.enabled = false;
+    ///    }
+    ///}
 
     IEnumerator AttackCooldown() 
     {

@@ -59,6 +59,17 @@ public class PlayerCollision : MonoBehaviour
             playerMove.anim.SetTrigger("hurt");
         }
 
+        if (col.gameObject.CompareTag("Checkpoint")) 
+        {
+            playerAct.checkpoint.position = col.gameObject.transform.position;
+        }
+
+        if (col.gameObject.CompareTag("Hazard"))
+        {
+            print("Detected hazard box");
+            playerAct.Death(10);
+        }
+
         if (col.gameObject.CompareTag("PotionM"))
         {
             print("Previous Magic charge = " + playerAct.magicCharge);

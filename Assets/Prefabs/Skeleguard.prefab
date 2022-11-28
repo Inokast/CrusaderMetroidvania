@@ -86,7 +86,7 @@ Transform:
   m_GameObject: {fileID: 7221556627695093874}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 5.6, y: -2.13, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9158307449045129068}
@@ -151,7 +151,6 @@ MonoBehaviour:
   weapon: {fileID: 1589852860984717136}
   speed: 3
   chaseRange: 8
-  attackRange: 1
   enemyHealth: 60
 --- !u!1 &7848551601947095601
 GameObject:
