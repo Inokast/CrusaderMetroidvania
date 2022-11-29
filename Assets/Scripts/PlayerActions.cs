@@ -28,7 +28,7 @@ public class PlayerActions : MonoBehaviour
     [Header("Checkpoint Location")]
     public Transform checkpoint;
 
-    private manaBar manaBar;
+    private ManaBarManager manaBar;
     private HealthBarManager healthBar;
     //public string[] equippedSpells;
 
@@ -38,9 +38,9 @@ public class PlayerActions : MonoBehaviour
         anim = GetComponentInChildren<PlayerAnimation>();
         staffCol.enabled = false;
         checkpoint = gameObject.transform;
-        manaBar = FindObjectOfType<manaBar>();
+        manaBar = FindObjectOfType<ManaBarManager>();
         healthBar = FindObjectOfType<HealthBarManager>();
-        HealthBarManager.hpbm.SetMaxHealth(health);
+        healthBar.SetMaxHealth(health);
         manaBar.SetMaxMana((int)maxMagicCharge);
     }
 
@@ -96,7 +96,7 @@ public class PlayerActions : MonoBehaviour
 
             rb.AddForce(force, ForceMode2D.Impulse);
             StartCoroutine(AttackCooldown());
-            manaBar.mabm.UpdateMana((int)magicCharge);
+            manaBar.UpdateMana((int)magicCharge);
         }      
     }
 
