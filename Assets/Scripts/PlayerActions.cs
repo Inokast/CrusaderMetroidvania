@@ -49,7 +49,7 @@ public class PlayerActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("p")) 
+        if (Input.GetMouseButtonDown(0)) 
         {
             Attack();
         }

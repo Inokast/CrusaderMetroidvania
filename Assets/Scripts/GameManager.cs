@@ -89,6 +89,12 @@ public class GameManager : MonoBehaviour
         quitPanel?.SetActive(true);
     }
 
+    public void OnMenuClick()
+    {
+        SceneManager.LoadScene(0);
+        Debug.Log("went to main menu");
+    }
+
     public void YesQuit()
     {
         Application.Quit();
