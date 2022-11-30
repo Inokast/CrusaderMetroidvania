@@ -41,7 +41,9 @@ public class PlayerActions : MonoBehaviour
         manaBar = FindObjectOfType<ManaBarManager>();
         healthBar = FindObjectOfType<HealthBarManager>();
         healthBar.SetMaxHealth(health);
+        healthBar.UpdateHealth(health);
         manaBar.SetMaxMana((int)maxMagicCharge);
+        manaBar.UpdateMana((int)magicCharge);
     }
 
     // Update is called once per frame
@@ -152,7 +154,7 @@ public class PlayerActions : MonoBehaviour
     public void Death(int damage) 
     {
         health = health - damage;
-        HealthBarManager.hpbm.UpdateHealth(health);
+        healthBar.UpdateHealth(health);
         if (health <= 0)
         {
             //gameover
