@@ -18,21 +18,14 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Values")]       //I figure the game manager can just directly handle UI this time?- T.E.
     TextMeshProUGUI scoreText;
-    public GameObject optionsPanel, helpPanel, quitPanel;
+    public GameObject optionsPanel, helpPanel, pausePanel, quitPanel;
     public GameObject dialogueDisplay;   //dialogueDisplay is meant for the trigger which the player encounters to fire off dialogue snippits
     public TextMeshProUGUI[] alert;    //alert is the space for actual alert strings (scriptable objects?)
 
     [Header("In-game Values")]
-    int score;
-
-    public int Score
-    {
-        get { return score; }
-        set { score = value; }
-    }
-
     string previousScene = null;
     private GameObject playerSpawner;
+    [SerializeField] bool paused;
 
 
     void Awake()
@@ -59,62 +52,86 @@ public class GameManager : MonoBehaviour
         }
     }
 
-        //buttons here
-        #region buttons
-        public void OnPlayClick()
-        {
-            SceneManager.LoadScene("TestLevel");
-            Debug.Log("started game");
-        }
+    void Update()
+    {
+        Pause();
+    }
 
-        public void OnQuitClick()
+    public void Pause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            quitPanel?.SetActive(true);
-        }
+            paused = !paused;
 
-        public void YesQuit()
-        {
-            Application.Quit();
-            Debug.Log("quit game");
+            if (paused)
+            {
+                Time.timeScale = 0f;
+                pausePanel.SetActive(true);
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                pausePanel.SetActive(false);
+            }
         }
+    }
 
-        public void NoQuit()
-        {
-            quitPanel?.SetActive(false);
-            Debug.Log("did not quit game");
-        }
+    //buttons here
+    #region buttons
+    public void OnPlayClick()
+    {
+        SceneManager.LoadScene("TestLevel");
+        Debug.Log("started game");
+    }
 
-        public void OnOptionsClick()
-        {
-            optionsPanel?.SetActive(true);
-        }
+    public void OnQuitClick()
+    {
+        quitPanel?.SetActive(true);
+    }
 
-        public void OnCloseClick()
-        {
-            optionsPanel?.SetActive(false);
-        }
+    public void YesQuit()
+    {
+        Application.Quit();
+        Debug.Log("quit game");
+    }
 
-        //for the help event trigger in options panel
-        public void OnHelpMouseOver()
-        {
-            helpPanel?.SetActive(true);
-        }
+    public void NoQuit()
+    {
+        quitPanel?.SetActive(false);
+        Debug.Log("did not quit game");
+    }
 
-        public void OnHelpMouseAway()
-        {
-            helpPanel?.SetActive(false);
-        }
-        #endregion
+    public void OnOptionsClick()
+    {
+        optionsPanel?.SetActive(true);
+    }
 
-        //Set Previous Scene is called by the LoadNextLevel class to set the scene that's being exited to keep the name
-        public void SetPreviousScene(string preScene)
-        {
-            previousScene = preScene;
-        }
+    public void OnCloseClick()
+    {
+        optionsPanel?.SetActive(false);
+    }
 
-        private void CallPlayerSpawner(string lastScene)
-        {
-            //Tells the PlayerSpawnManager to spawn the player
-            playerSpawner.GetComponent<PlayerSpawnBehavior>().PlacePlayer(lastScene);
-        }
+    //for the help event trigger in options panel
+    public void OnHelpMouseOver()
+    {
+        helpPanel?.SetActive(true);
+    }
+
+    public void OnHelpMouseAway()
+    {
+        helpPanel?.SetActive(false);
+    }
+    #endregion
+
+    //Set Previous Scene is called by the LoadNextLevel class to set the scene that's being exited to keep the name
+    public void SetPreviousScene(string preScene)
+    {
+        previousScene = preScene;
+    }
+
+    private void CallPlayerSpawner(string lastScene)
+    {
+        //Tells the PlayerSpawnManager to spawn the player
+        playerSpawner.GetComponent<PlayerSpawnBehavior>().PlacePlayer(lastScene);
+    }
 }
