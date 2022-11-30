@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - ShadowHand
+  - Checkpoint
+  - Projectile/Player
+  - PotionM
+  - Hazard
+  - PlayerSpawner
+  - Staff
+  - BreakableWall
   layers:
   - Default
   - TransparentFX
@@ -15,7 +23,7 @@ TagManager:
   - groundLayer
   - Player
   - Enemy
-  - 
+  - Breakable
   - 
   - 
   - 

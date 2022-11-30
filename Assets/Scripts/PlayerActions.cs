@@ -25,6 +25,12 @@ public class PlayerActions : MonoBehaviour
     public float maxMagicCharge = 100;
     public float magicCharge = 100;
 
+    [Header("Spell Stats")]
+    [SerializeField] Transform blastPoint;
+    [SerializeField] float blastRange = 0.5f;
+    [SerializeField] LayerMask enemyLayer;
+    [SerializeField] LayerMask breakableLayer;
+
     [Header("Checkpoint Location")]
     public Vector2 checkpoint;
 
@@ -62,6 +68,11 @@ public class PlayerActions : MonoBehaviour
         if (Input.GetKeyDown("2"))
         {
             CastShadowHand();
+        }
+
+        if (Input.GetKeyDown("3"))
+        {
+            CastBlast();
         }
     }
 
@@ -130,6 +141,32 @@ public class PlayerActions : MonoBehaviour
             StartCoroutine(AttackCooldown());
             manaBar.UpdateMana((int)magicCharge);
         }
+    }
+
+    private void CastBlast()
+    {
+        isAttacking = true;
+        magicCharge -= 10;
+        anim.SetTrigger("attack");
+
+        //Enemies
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(blastPoint.position, blastRange, enemyLayer);
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<EnemyBehavior>().DamageEnemy(15);
+        }
+
+        //BreakableWalls
+        Collider2D[] hitBreakables = Physics2D.OverlapCircleAll(blastPoint.position, blastRange, breakableLayer);
+        foreach (Collider2D breakable in hitBreakables)
+        {
+            Debug.Log("Hit a breakable");
+            Destroy(breakable.gameObject);
+        }
+
+        StartCoroutine(AttackCooldown());
+        manaBar.UpdateMana((int)magicCharge);
+
     }
 
     public void RefillMagicCharge(float amount) 

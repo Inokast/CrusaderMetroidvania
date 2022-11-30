@@ -161,7 +161,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    void DamageEnemy(float amt)
+    public void DamageEnemy(float amt)
     {
         anim.SetTrigger("isHit");
         SFX.sfx.PlayGameSound(3);
