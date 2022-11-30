@@ -61,7 +61,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (col.gameObject.CompareTag("Checkpoint")) 
         {
-            playerAct.checkpoint.position = col.gameObject.transform.position;
+            playerAct.checkpoint = new Vector2(col.gameObject.transform.position.x, col.gameObject.transform.position.y);
         }
 
         if (col.gameObject.CompareTag("Hazard"))

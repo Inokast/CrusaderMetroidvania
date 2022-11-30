@@ -26,7 +26,7 @@ public class PlayerActions : MonoBehaviour
     public float magicCharge = 100;
 
     [Header("Checkpoint Location")]
-    public Transform checkpoint;
+    public Vector2 checkpoint;
 
     private ManaBarManager manaBar;
     private HealthBarManager healthBar;
@@ -37,7 +37,7 @@ public class PlayerActions : MonoBehaviour
     {
         anim = GetComponentInChildren<PlayerAnimation>();
         staffCol.enabled = false;
-        checkpoint = gameObject.transform;
+        checkpoint = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
         manaBar = FindObjectOfType<ManaBarManager>();
         healthBar = FindObjectOfType<HealthBarManager>();
         healthBar.SetMaxHealth(health);
@@ -165,7 +165,7 @@ public class PlayerActions : MonoBehaviour
 
     public void Respawn() 
     {
-        gameObject.transform.position = checkpoint.position;
+        gameObject.transform.position = new Vector3(checkpoint.x, checkpoint.y, 0);
     }
 
     private void ToggleStaffHitbox() 
