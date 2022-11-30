@@ -15,6 +15,7 @@ public class EnemyBehavior : MonoBehaviour
     Animator anim;
     [SerializeField] Collider2D weapon;
     EnemyBehavior brain;
+    [SerializeField] GameObject mana;
 
     [Header("Behavior Values")]
     State currentState;
@@ -174,11 +175,26 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    void DropLoot(int chance)
+    {
+        GameObject manaClone = mana;
+        if (chance == 1)
+        {
+            //instantiate a mana potion here
+            Instantiate(manaClone, transform.position, Quaternion.identity);
+            Debug.Log($"You got a potion!");
+        }
+    }
+
     void Die()
     {
+        int luck = Random.Range(1, 3);
+
         //do death things here- T.E.
         anim.SetTrigger("isDead");
         brain.enabled = false;
+        DropLoot(luck);
+        Destroy(gameObject, 3f);
     }
     #endregion
 }
