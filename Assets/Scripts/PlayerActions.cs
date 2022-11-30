@@ -51,7 +51,6 @@ public class PlayerActions : MonoBehaviour
     {
         if (Input.GetKeyDown("p")) 
         {
-            print("Pressed P");
             Attack();
         }
 
@@ -150,17 +149,21 @@ public class PlayerActions : MonoBehaviour
         }     
     }
 
-
-    public void Death(int damage) 
+    public void TakeDamage(int damage) 
     {
         health = health - damage;
         healthBar.UpdateHealth(health);
+    }
+
+    public void Death(int damage) 
+    {
+        TakeDamage(damage);
         if (health <= 0)
         {
-            //gameover
+            Respawn();
+            health = 100;
+            magicCharge = maxMagicCharge;
         }
-
-        else Respawn();
     }
 
     public void Respawn() 

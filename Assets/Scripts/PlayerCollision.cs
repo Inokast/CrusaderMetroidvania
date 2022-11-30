@@ -50,7 +50,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy")) 
         {
-            playerAct.Death(1);
+            playerAct.TakeDamage(1);
             playerMove = gameObject.GetComponent<PlayerMovement>();
             Vector3 colVector = col.gameObject.transform.position;
             Vector3 temp = colVector - gameObject.transform.position;
@@ -67,7 +67,8 @@ public class PlayerCollision : MonoBehaviour
         if (col.gameObject.CompareTag("Hazard"))
         {
             print("Detected hazard box");
-            playerAct.Death(10);
+            playerAct.TakeDamage(10);
+            playerAct.Respawn();
         }
 
         if (col.gameObject.CompareTag("PotionM"))
