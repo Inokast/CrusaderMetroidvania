@@ -50,6 +50,8 @@ public class PlayerActions : MonoBehaviour
         healthBar.UpdateHealth(health);
         manaBar.SetMaxMana((int)maxMagicCharge);
         manaBar.UpdateMana((int)magicCharge);
+
+        GameManager.gm.CallPlayerSpawner(GameManager.gm.previousScene);
     }
 
     // Update is called once per frame
@@ -114,33 +116,37 @@ public class PlayerActions : MonoBehaviour
 
     private void CastShadowHand()
     {
-        if (isAttacking == false && magicCharge >= 5)
+        if (GameManager.gm.unlockedShadowHand == true) 
         {
-            isAttacking = true;
-            magicCharge -= 5;
-            PlayerMovement player = GetComponent<PlayerMovement>();
-            Vector2 temp;
-            GameObject hand;
-
-            if (player.side == 1)
+            if (isAttacking == false && magicCharge >= 5)
             {
-                temp = new Vector2(transform.position.x + 1, transform.position.y - .1f);
-                hand = Instantiate(shadowHandPrefab, temp, shadowHandPrefab.transform.rotation);
+                isAttacking = true;
+                magicCharge -= 5;
+                PlayerMovement player = GetComponent<PlayerMovement>();
+                Vector2 temp;
+                GameObject hand;
+
+                if (player.side == 1)
+                {
+                    temp = new Vector2(transform.position.x + 1, transform.position.y - .1f);
+                    hand = Instantiate(shadowHandPrefab, temp, shadowHandPrefab.transform.rotation);
+                }
+
+                else
+                {
+                    temp = new Vector2(transform.position.x - 1, transform.position.y - .1f);
+                    hand = Instantiate(shadowHandPrefab, temp, shadowHandPrefab.transform.rotation);
+                }
+
+
+                Projectile p = hand.GetComponent<Projectile>();
+                p.power = magicPower * 2;
+
+                StartCoroutine(AttackCooldown());
+                manaBar.UpdateMana((int)magicCharge);
             }
-
-            else
-            {
-                temp = new Vector2(transform.position.x - 1, transform.position.y - .1f);
-                hand = Instantiate(shadowHandPrefab, temp, shadowHandPrefab.transform.rotation);
-            }
-
-
-            Projectile p = hand.GetComponent<Projectile>();
-            p.power = magicPower * 2;
-
-            StartCoroutine(AttackCooldown());
-            manaBar.UpdateMana((int)magicCharge);
         }
+        
     }
 
     private void CastBlast()

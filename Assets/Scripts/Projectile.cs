@@ -19,6 +19,11 @@ public class Projectile : MonoBehaviour
             StopAllCoroutines();
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.tag == "BreakableWall") 
+        {
+            Destroy(collision.gameObject);
+        }
         
     }
 

@@ -32,7 +32,8 @@ public class PlayerSpawnBehavior : MonoBehaviour
         {
             //Attempt to find the correlating spawn point and set the spawnPoint GO equal to that point
             spawnPoint = GameObject.Find("From" + lastScene);
-            Instantiate(player, spawnPoint.transform.position, Quaternion.identity);
+            player.transform.position = spawnPoint.transform.position;
+            //Instantiate(player, spawnPoint.transform.position, Quaternion.identity);
         }
         catch
         {
@@ -40,7 +41,7 @@ public class PlayerSpawnBehavior : MonoBehaviour
             try
             {
                 spawnPoint = GameObject.Find("DefaultSpawn");
-                Instantiate(player, spawnPoint.transform.position, Quaternion.identity);
+                player.transform.position = spawnPoint.transform.position;
             }
             catch
             {

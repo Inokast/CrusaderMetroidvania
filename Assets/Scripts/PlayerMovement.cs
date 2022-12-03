@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool groundTouch;
     private bool hasDashed;
-    private bool isDashing;
 
     public int side = 1; // Used to check which direction player is facing.
 
@@ -151,13 +150,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.gravityScale = 0;
         fallMultiplierEnabled = false;
-        isDashing = true;
 
         yield return new WaitForSeconds(.3f);
 
         rb.gravityScale = 3;
         fallMultiplierEnabled = true;
-        isDashing = false;
     }
 
     private void FixedUpdate()
@@ -170,7 +167,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void Launch(Vector2 direction) 
     {
-        print("Launch function called");
 
         rb.AddForce(direction * 10, ForceMode2D.Impulse);
 

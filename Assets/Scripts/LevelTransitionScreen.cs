@@ -12,6 +12,7 @@ public class LevelTransitionScreen : MonoBehaviour
 
     public void StartTransition() 
     {
-        screen.SetTrigger("Start");
+        screen.SetTrigger("start");
     }
+
 }

@@ -25,9 +25,9 @@ public class LoadNextLevel : MonoBehaviour
 
     //This script tells the gamemanager which level the player is leaving and to load the next
 
-    private void Start()
+    private void Awake()
     {
-        
+        transition = FindObjectOfType<LevelTransitionScreen>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -49,6 +49,7 @@ public class LoadNextLevel : MonoBehaviour
             }
         }
     }
+
 
     IEnumerator LoadLevel() 
     {

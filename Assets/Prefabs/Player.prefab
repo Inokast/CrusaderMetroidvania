@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1554849368971479027}
   - component: {fileID: 3154196839814948449}
   - component: {fileID: 4105362947331779763}
+  - component: {fileID: 7174314639887714788}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -237,7 +238,23 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
+  breakableLayer:
+    serializedVersion: 2
+    m_Bits: 0
   checkpoint: {x: 0, y: 0}
+--- !u!114 &7174314639887714788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642745211280784804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cc41fc7542c1044963dcb81b406485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3642745211280784804}
 --- !u!1 &5486785614726246807
 GameObject:
   m_ObjectHideFlags: 0

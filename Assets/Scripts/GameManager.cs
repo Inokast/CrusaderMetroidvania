@@ -23,9 +23,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI[] alert;    //alert is the space for actual alert strings (scriptable objects?)
 
     [Header("In-game Values")]
-    string previousScene = null;
-    private GameObject playerSpawner;
+    public string previousScene = null;
+    private PlayerSpawnBehavior playerSpawner;
     [SerializeField] bool paused;
+    [SerializeField] public bool unlockedShadowHand = false;
 
 
     void Awake()
@@ -38,18 +39,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //On start find the player spawn manager.
-        playerSpawner = GameObject.FindGameObjectWithTag("PlayerSpawner");
-
-        //GameManager calls the Player Spawn Manager to spawn the player at the correct spawn point
-        try
-        {
-            CallPlayerSpawner(previousScene);
-        }
-        catch
-        {
-
-        }
+        previousScene = SceneManager.GetActiveScene().name;
     }
 
     void Update()
@@ -80,7 +70,8 @@ public class GameManager : MonoBehaviour
     #region buttons
     public void OnPlayClick()
     {
-        SceneManager.LoadScene("TestLevel");
+
+        StartCoroutine(StartGame());
         Debug.Log("started game");
     }
 
@@ -135,9 +126,21 @@ public class GameManager : MonoBehaviour
         previousScene = preScene;
     }
 
-    private void CallPlayerSpawner(string lastScene)
+    public void CallPlayerSpawner(string lastScene)
     {
         //Tells the PlayerSpawnManager to spawn the player
-        playerSpawner.GetComponent<PlayerSpawnBehavior>().PlacePlayer(lastScene);
+        playerSpawner = FindObjectOfType<PlayerSpawnBehavior>();
+        playerSpawner.PlacePlayer(lastScene);
+    }
+
+    IEnumerator StartGame() 
+    {
+        LevelTransitionScreen transition = FindObjectOfType<LevelTransitionScreen>();
+
+        transition.StartTransition();
+
+        yield return new WaitForSeconds(transition.transitionTime);
+
+        SceneManager.LoadScene("CaveRoomOne");
     }
 }

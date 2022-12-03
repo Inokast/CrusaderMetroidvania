@@ -12,15 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 21d0954cc90f6704c84a0074a53007eb
   - enabled: 1
-    path: Assets/Scenes/TestLevel.unity
-    guid: e227e3eb7c7dae347816bd1068c81683
-  - enabled: 1
     path: Assets/Scenes/CaveRoomOne.unity
     guid: c8f6388921f2e95418a9745b1f16e213
   - enabled: 1
-    path: Assets/Scenes/CavesLevelTwo.unity
+    path: Assets/Scenes/CaveRoomTwo.unity
     guid: c311c41c6d9bfef4d82566d6acf61f12
   - enabled: 1
-    path: Assets/Scenes/GraveyardLevelOne.unity
+    path: Assets/Scenes/GraveyardRoomOne.unity
     guid: 1ac9bdbea32fd504d9cf064a9d84641f
+  - enabled: 0
+    path: Assets/Scenes/TestLevel.unity
+    guid: e227e3eb7c7dae347816bd1068c81683
   m_configObjects: {}
