@@ -429,6 +429,7 @@ MonoBehaviour:
   quitPanel: {fileID: 1171678605}
   dialogueDisplay: {fileID: 0}
   alert: []
+  previousScene: 
   paused: 0
   unlockedShadowHand: 0
 --- !u!1 &415534080
@@ -2376,6 +2377,10 @@ PrefabInstance:
     - target: {fileID: 6610263770803751098, guid: ca2edf4b48ce0e34ba7b8086cf08ce4e, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6610263770803751098, guid: ca2edf4b48ce0e34ba7b8086cf08ce4e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6610263770803751099, guid: ca2edf4b48ce0e34ba7b8086cf08ce4e, type: 3}
       propertyPath: m_RootOrder

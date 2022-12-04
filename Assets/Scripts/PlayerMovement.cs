@@ -216,6 +216,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(Vector2 dir) 
     {
+        SFX.sfx.PlayGameSound(0);
+
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.velocity += Vector2.up * jumpForce;
     }

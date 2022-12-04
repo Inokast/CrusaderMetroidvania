@@ -78,8 +78,11 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
+    #region Spellcasting
     private void CastShoot() 
     {
+        SFX.sfx.PlayGameSound(4);
+
         if (isAttacking == false && magicCharge >= 5) 
         {
             isAttacking = true;
@@ -101,7 +104,6 @@ public class PlayerActions : MonoBehaviour
                 crystal.transform.Rotate(-180, 0, 0);
             }
 
-
             Projectile p = crystal.GetComponent<Projectile>();
             p.power = magicPower;
             Rigidbody2D rb = crystal.GetComponent<Rigidbody2D>();
@@ -116,6 +118,8 @@ public class PlayerActions : MonoBehaviour
 
     private void CastShadowHand()
     {
+        SFX.sfx.PlayGameSound(4);
+
         if (GameManager.gm.unlockedShadowHand == true) 
         {
             if (isAttacking == false && magicCharge >= 5)
@@ -138,19 +142,19 @@ public class PlayerActions : MonoBehaviour
                     hand = Instantiate(shadowHandPrefab, temp, shadowHandPrefab.transform.rotation);
                 }
 
-
                 Projectile p = hand.GetComponent<Projectile>();
                 p.power = magicPower * 2;
 
                 StartCoroutine(AttackCooldown());
                 manaBar.UpdateMana((int)magicCharge);
             }
-        }
-        
+        }        
     }
 
     private void CastBlast()
     {
+        SFX.sfx.PlayGameSound(4);
+
         isAttacking = true;
         magicCharge -= 10;
         anim.SetTrigger("attack");
@@ -172,8 +176,8 @@ public class PlayerActions : MonoBehaviour
 
         StartCoroutine(AttackCooldown());
         manaBar.UpdateMana((int)magicCharge);
-
     }
+    #endregion
 
     public void RefillMagicCharge(float amount) 
     {
@@ -186,6 +190,8 @@ public class PlayerActions : MonoBehaviour
     {
         if (isAttacking == false) 
         {
+            SFX.sfx.PlayGameSound(1);
+
             isAttacking = true;
             anim.SetTrigger("attack");
             StartCoroutine(AttackCooldown());

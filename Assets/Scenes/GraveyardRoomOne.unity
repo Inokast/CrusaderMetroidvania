@@ -758,7 +758,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7d0857f75a79b764d823961d7b94a0e5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 25ba6ee79ee385942ae8641f0355a85a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -2104,6 +2104,14 @@ PrefabInstance:
       propertyPath: shadowHandPrefab
       value: 
       objectReference: {fileID: 4075020064323301744, guid: 13064032884e0c24d9e7f8a2c93163e2, type: 3}
+    - target: {fileID: 4105362947331779763, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105362947331779763, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
+      propertyPath: breakableLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 4305511531292823082, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
       propertyPath: m_TagString
       value: Staff
