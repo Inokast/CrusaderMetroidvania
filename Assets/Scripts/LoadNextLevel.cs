@@ -39,6 +39,7 @@ public class LoadNextLevel : MonoBehaviour
             try
             {
                 //Tell GameManager the name of the level being exited
+                Debug.Log("I should be first!");
                 GameManager.gm.SetPreviousScene(SceneManager.GetActiveScene().name);
                 //Loads the next scene
                 StartCoroutine(LoadLevel());

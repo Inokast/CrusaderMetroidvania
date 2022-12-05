@@ -50,8 +50,6 @@ public class PlayerActions : MonoBehaviour
         healthBar.UpdateHealth(health);
         manaBar.SetMaxMana((int)maxMagicCharge);
         manaBar.UpdateMana((int)magicCharge);
-
-        GameManager.gm.CallPlayerSpawner(GameManager.gm.previousScene);
     }
 
     // Update is called once per frame
@@ -76,6 +74,12 @@ public class PlayerActions : MonoBehaviour
         {
             CastBlast();
         }
+    }
+
+    public static void StartSpawning(string pS)
+    {
+        Debug.Log("I should be Third!");
+        GameManager.gm.CallPlayerSpawner(pS);
     }
 
     #region Spellcasting

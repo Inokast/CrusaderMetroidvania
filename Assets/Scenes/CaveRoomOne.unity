@@ -11622,7 +11622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281052091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 93.64, y: 37.15, z: 0}
+  m_LocalPosition: {x: -10.5, y: -0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26479,7 +26479,7 @@ GameObject:
   - component: {fileID: 686785688}
   m_Layer: 0
   m_Name: FromGraveyardRoomOne
-  m_TagString: PlayerSpawner
+  m_TagString: FromGraveyardRoomOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26492,7 +26492,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686785687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 82.57, y: 35.3, z: -0.2843719}
+  m_LocalPosition: {x: -21.4, y: -2.2, z: -0.2843719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31205,11 +31205,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3642745211280784806, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.62
+      value: -23.7
       objectReference: {fileID: 0}
     - target: {fileID: 3642745211280784806, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.27
+      value: 23.2
       objectReference: {fileID: 0}
     - target: {fileID: 3642745211280784806, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -42746,7 +42746,7 @@ GameObject:
   - component: {fileID: 1136204847}
   - component: {fileID: 1136204846}
   - component: {fileID: 1136204845}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

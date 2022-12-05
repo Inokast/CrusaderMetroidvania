@@ -13,6 +13,7 @@ TagManager:
   - PlayerSpawner
   - Staff
   - BreakableWall
+  - FromGraveyardRoomOne
   layers:
   - Default
   - TransparentFX

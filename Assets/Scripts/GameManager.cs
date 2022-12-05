@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI[] alert;    //alert is the space for actual alert strings (scriptable objects?)
 
     [Header("In-game Values")]
-    public string previousScene = null;
+    [SerializeField] public string previousScene = "";
     private PlayerSpawnBehavior playerSpawner;
     [SerializeField] bool paused;
     [SerializeField] public bool unlockedShadowHand = false;
@@ -33,12 +33,17 @@ public class GameManager : MonoBehaviour
         if (gm == null)
         {
             gm = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if(gm != this)
+        {
+            Destroy(gameObject);
         }
     }
 
     void Start()
     {
-        previousScene = SceneManager.GetActiveScene().name;
+        
     }
 
     void Update()
@@ -122,11 +127,15 @@ public class GameManager : MonoBehaviour
     //Set Previous Scene is called by the LoadNextLevel class to set the scene that's being exited to keep the name
     public void SetPreviousScene(string preScene)
     {
+        Debug.Log("I should be second!");
         previousScene = preScene;
+        Debug.Log("Previos scen set too " + previousScene);
+        PlayerActions.StartSpawning(previousScene);
     }
 
     public void CallPlayerSpawner(string lastScene)
     {
+        Debug.Log("I should be fourth!");
         //Tells the PlayerSpawnManager to spawn the player
         playerSpawner = FindObjectOfType<PlayerSpawnBehavior>();
         playerSpawner.PlacePlayer(lastScene);
