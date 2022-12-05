@@ -80,10 +80,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 //SFX.sfx.PlayGameSound(0);       //jump sfx- T.E.
                 Jump(Vector2.up);
-
-                
-                //SFX.sfx.PlayGameSound(0);       //jump sfx- T.E.
-                Jump(Vector2.up);
             }
 
         }
@@ -184,22 +180,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void WallJump() 
-    {
-        if ((side == 1 && col.onRightWall) || side == -1 && !col.onRightWall)
-        {
-            side *= -1;    
-        }
-
-        StopCoroutine(DisableMovement(0));
-        StartCoroutine(DisableMovement(.1f));
-
-        Vector2 wallDir = col.onRightWall ? Vector2.left : Vector2.right; // ? operand first checks if value on left is null before continuing to evaluate the bool
-
-        Jump(Vector2.up / 1.5f + wallDir / 1.5f);
-
-        wallJumped = true;
-    }
 
     private void WallSlide() 
     {

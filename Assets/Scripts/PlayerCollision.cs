@@ -26,6 +26,7 @@ public class PlayerCollision : MonoBehaviour
     public float collisionRadius = 0.25f;
     public Vector2 bottomOffset, rightOffset, leftOffset;
 
+    public static bool unlockedShadowHand;
 
     // Start is called before the first frame update
     private void Start()
@@ -77,6 +78,12 @@ public class PlayerCollision : MonoBehaviour
             Destroy(col.gameObject);
             playerAct.RefillMagicCharge(15f);
             print("New Magic charge = " + playerAct.magicCharge);
+        }
+        if (col.gameObject.CompareTag("ShadowhandM"))
+        {
+            Destroy(col.gameObject);
+            unlockedShadowHand = true;
+            Debug.Log("Unlocked Shadow hand spell");
         }
     }
 

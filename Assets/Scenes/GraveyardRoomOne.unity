@@ -5856,7 +5856,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.27464426, y: 0}
+  m_Offset: {x: 0.23395863, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5867,7 +5867,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5492883, y: 1}
+  m_Size: {x: 1.467917, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &342546440
 SpriteRenderer:
@@ -14144,6 +14144,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4105362947331779763, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
+      propertyPath: blastPoint
+      value: 
+      objectReference: {fileID: 855041283}
+    - target: {fileID: 4105362947331779763, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
       propertyPath: shadowHandPrefab
       value: 
       objectReference: {fileID: 4075020064323301744, guid: 13064032884e0c24d9e7f8a2c93163e2, type: 3}
@@ -14202,6 +14206,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
+--- !u!4 &855041283 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8053103159499919235, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
+  m_PrefabInstance: {fileID: 855041282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &858113344
 PrefabInstance:
   m_ObjectHideFlags: 0

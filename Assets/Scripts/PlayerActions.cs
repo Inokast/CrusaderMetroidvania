@@ -124,7 +124,7 @@ public class PlayerActions : MonoBehaviour
     {
         SFX.sfx.PlayGameSound(4);
 
-        if (GameManager.gm.unlockedShadowHand == true) 
+        if (PlayerCollision.unlockedShadowHand == true) 
         {
             if (isAttacking == false && magicCharge >= 5)
             {
@@ -167,7 +167,7 @@ public class PlayerActions : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(blastPoint.position, blastRange, enemyLayer);
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyBehavior>().DamageEnemy(15);
+            enemy.GetComponentInParent<EnemyBehavior>().DamageEnemy(15);
         }
 
         //BreakableWalls
@@ -206,6 +206,12 @@ public class PlayerActions : MonoBehaviour
     {
         health = health - damage;
         healthBar.UpdateHealth(health);
+        if (health <= 0)
+        {
+            Respawn();
+            health = 100;
+            magicCharge = maxMagicCharge;
+        }
     }
 
     public void Death(int damage) 
@@ -222,6 +228,7 @@ public class PlayerActions : MonoBehaviour
     public void Respawn() 
     {
         gameObject.transform.position = new Vector3(checkpoint.x, checkpoint.y, 0);
+        healthBar.UpdateHealth(health);
     }
 
     private void ToggleStaffHitbox() 
