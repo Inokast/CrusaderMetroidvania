@@ -79,6 +79,7 @@ public class PlayerCollision : MonoBehaviour
             playerAct.RefillMagicCharge(15f);
             print("New Magic charge = " + playerAct.magicCharge);
         }
+
         if (col.gameObject.CompareTag("ShadowhandM"))
         {
             Destroy(col.gameObject);

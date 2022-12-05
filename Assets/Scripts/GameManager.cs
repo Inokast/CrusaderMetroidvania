@@ -32,9 +32,9 @@ public class GameManager : MonoBehaviour
         if (gm == null)
         {
             gm = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
-        else if(gm != this)
+        else if (gm != this)
         {
             Destroy(gameObject);
         }
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        paused = false;
         if (previousScene == "End")
         {
             StartCoroutine(TransitionToMenu(3f));
@@ -68,12 +69,12 @@ public class GameManager : MonoBehaviour
             if (paused)
             {
                 Time.timeScale = 0f;
-                pausePanel.SetActive(true);
+                pausePanel?.SetActive(true);
             }
             else
             {
                 Time.timeScale = 1f;
-                pausePanel.SetActive(false);
+                pausePanel?.SetActive(false);
             }
         }
     }
@@ -82,7 +83,6 @@ public class GameManager : MonoBehaviour
     #region buttons
     public void OnPlayClick()
     {
-
         StartCoroutine(StartGame());
         Debug.Log("started game");
     }
@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     public void OnMenuClick()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
         Debug.Log("went to main menu");
     }

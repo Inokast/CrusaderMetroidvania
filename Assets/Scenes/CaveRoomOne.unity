@@ -3625,7 +3625,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1024, y: 768}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
@@ -77558,7 +77558,6 @@ MonoBehaviour:
   - {fileID: 0}
   previousScene: 
   paused: 0
-  unlockedShadowHand: 0
 --- !u!4 &1988493268
 Transform:
   m_ObjectHideFlags: 0

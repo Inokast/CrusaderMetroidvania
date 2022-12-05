@@ -46,10 +46,10 @@ public class PlayerActions : MonoBehaviour
         checkpoint = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
         manaBar = FindObjectOfType<ManaBarManager>();
         healthBar = FindObjectOfType<HealthBarManager>();
-        healthBar.SetMaxHealth(health);
-        healthBar.UpdateHealth(health);
-        manaBar.SetMaxMana((int)maxMagicCharge);
-        manaBar.UpdateMana((int)magicCharge);
+        healthBar?.SetMaxHealth(health);
+        healthBar?.UpdateHealth(health);
+        manaBar?.SetMaxMana((int)maxMagicCharge);
+        manaBar?.UpdateMana((int)magicCharge);
     }
 
     // Update is called once per frame

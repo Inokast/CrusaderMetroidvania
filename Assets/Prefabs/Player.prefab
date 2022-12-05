@@ -16,8 +16,6 @@ GameObject:
   - component: {fileID: 4105362947331779753}
   - component: {fileID: 4105362947331779754}
   - component: {fileID: 4105362947331779760}
-  - component: {fileID: 1554849368971479027}
-  - component: {fileID: 3154196839814948449}
   - component: {fileID: 4105362947331779763}
   - component: {fileID: 7174314639887714788}
   m_Layer: 7
@@ -179,38 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128fe99345b3aff4f9e569348f43b9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &1554849368971479027
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3642745211280784804}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 21ad4e6af2271164a9aa4c7c4075489d, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.0221055}
-  m_Size: {x: 0.99076986, y: 4.057505}
-  m_Direction: 0
---- !u!70 &3154196839814948449
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3642745211280784804}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.0221055}
-  m_Size: {x: 1, y: 4.1}
-  m_Direction: 0
 --- !u!114 &4105362947331779763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,13 +200,13 @@ MonoBehaviour:
   maxMagicCharge: 100
   magicCharge: 100
   blastPoint: {fileID: 0}
-  blastRange: 0.5
+  blastRange: 0.7
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   breakableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   checkpoint: {x: 0, y: 0}
 --- !u!114 &7174314639887714788
 MonoBehaviour:
