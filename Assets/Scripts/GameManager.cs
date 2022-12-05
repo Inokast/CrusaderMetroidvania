@@ -7,7 +7,7 @@ using TMPro;
 //////////////////////////////////////////////
 //Assignment/Lab/Project: Metroidvania
 //Name: Daniel Sanchez, Andrew Krieps, Talyn Epting
-//Section: 2019SP.SGD.285.2144
+//Section: 2022SP.SGD.285.2144
 //Instructor: Aurore Locklear
 //Date: 11/7/2022
 /////////////////////////////////////////////
@@ -25,8 +25,7 @@ public class GameManager : MonoBehaviour
     public string previousScene = null;
     private PlayerSpawnBehavior playerSpawner;
     [SerializeField] bool paused;
-    [SerializeField] public bool unlockedShadowHand = false;
-
+    
 
     void Awake()
     {
@@ -140,6 +139,6 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(transition.transitionTime);
 
-        SceneManager.LoadScene("CaveRoomOne");
+        SceneManager.LoadScene("CaveRoomTwo");
     }
 }

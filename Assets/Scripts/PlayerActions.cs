@@ -120,7 +120,7 @@ public class PlayerActions : MonoBehaviour
     {
         SFX.sfx.PlayGameSound(4);
 
-        if (GameManager.gm.unlockedShadowHand == true) 
+        if (PlayerCollision.unlockedShadowHand == true) 
         {
             if (isAttacking == false && magicCharge >= 5)
             {
@@ -163,7 +163,7 @@ public class PlayerActions : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(blastPoint.position, blastRange, enemyLayer);
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyBehavior>().DamageEnemy(15);
+            enemy.GetComponentInParent<EnemyBehavior>().DamageEnemy(15);
         }
 
         //BreakableWalls
