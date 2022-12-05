@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GraveyardRoomOne.unity
     guid: 1ac9bdbea32fd504d9cf064a9d84641f
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 19fd642877b4f1542aaaf2d5d3f91329
   - enabled: 0
     path: Assets/Scenes/TestLevel.unity
     guid: e227e3eb7c7dae347816bd1068c81683

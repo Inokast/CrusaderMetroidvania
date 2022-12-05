@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI[] alert;    //alert is the space for actual alert strings (scriptable objects?)
 
     [Header("In-game Values")]
-    [SerializeField] public string previousScene = "";
+    [SerializeField] string previousScene = "";
     private PlayerSpawnBehavior playerSpawner;
     [SerializeField] bool paused;
     
@@ -42,12 +42,21 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        if (previousScene == "End")
+        {
+            StartCoroutine(TransitionToMenu(3f));
+        }
     }
 
     void Update()
     {
         Pause();
+    }
+
+    IEnumerator TransitionToMenu(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(0);
     }
 
     public void Pause()
@@ -128,7 +137,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("I should be second!");
         previousScene = preScene;
-        Debug.Log("Previos scen set too " + previousScene);
+        Debug.Log("Previous scene set too " + previousScene);
         PlayerActions.StartSpawning(previousScene);
     }
 
