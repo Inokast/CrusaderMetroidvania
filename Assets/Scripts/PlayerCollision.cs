@@ -78,6 +78,12 @@ public class PlayerCollision : MonoBehaviour
             playerAct.RefillMagicCharge(15f);
             print("New Magic charge = " + playerAct.magicCharge);
         }
+        if (col.gameObject.CompareTag("ShadowhandM"))
+        {
+            Destroy(col.gameObject);
+            GameManager.gm.unlockedShadowHand = true;
+            Debug.Log("Unlocked Shadow hand spell");
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D col)
