@@ -31249,7 +31249,7 @@ PrefabInstance:
       objectReference: {fileID: 709801445}
     - target: {fileID: 4105362947331779763, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
       propertyPath: blastRange
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4105362947331779763, guid: 7037c9aa74fde0f49877c96b1a114f84, type: 3}
       propertyPath: shadowHandPrefab
@@ -42748,7 +42748,7 @@ GameObject:
   - component: {fileID: 1136204845}
   m_Layer: 0
   m_Name: Square (12)
-  m_TagString: Untagged
+  m_TagString: BreakableWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46390,7 +46390,7 @@ GameObject:
   - component: {fileID: 1234789965}
   m_Layer: 0
   m_Name: Square (14)
-  m_TagString: Untagged
+  m_TagString: BreakableWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57933,6 +57933,10 @@ PrefabInstance:
     - target: {fileID: 3703826453706893154, guid: 6195d3751c3ac9a419e434203b3fb6c8, type: 3}
       propertyPath: m_Name
       value: Square (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703826453706893154, guid: 6195d3751c3ac9a419e434203b3fb6c8, type: 3}
+      propertyPath: m_TagString
+      value: BreakableWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -83006,7 +83010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6610263770803751098, guid: ca2edf4b48ce0e34ba7b8086cf08ce4e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6610263770803751099, guid: ca2edf4b48ce0e34ba7b8086cf08ce4e, type: 3}
       propertyPath: m_RootOrder
