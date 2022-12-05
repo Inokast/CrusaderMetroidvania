@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1589852860984717136}
-  mana: {fileID: 3702568063579028344, guid: 7ac87ee4a378ec348a8fda7f012b02d0, type: 3}
+  drop: {fileID: 3702568063579028344, guid: 7ac87ee4a378ec348a8fda7f012b02d0, type: 3}
   speed: 3
   chaseRange: 8
   enemyHealth: 60

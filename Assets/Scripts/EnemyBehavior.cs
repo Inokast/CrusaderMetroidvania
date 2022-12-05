@@ -15,7 +15,7 @@ public class EnemyBehavior : MonoBehaviour
     Animator anim;
     [SerializeField] Collider2D weapon;
     EnemyBehavior brain;
-    [SerializeField] GameObject mana;
+    [SerializeField] GameObject drop;
 
     [Header("Behavior Values")]
     State currentState;
@@ -177,7 +177,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void DropLoot(int chance)
     {
-        GameObject manaClone = mana;
+        GameObject manaClone = drop;
         if (chance == 1)
         {
             //instantiate a mana potion here
@@ -188,11 +188,16 @@ public class EnemyBehavior : MonoBehaviour
 
     void Die()
     {
-        int luck = Random.Range(1, 3);
+        int luck = Random.Range(1, 4);
 
-        //do death things here- T.E.
         anim.SetTrigger("isDead");
         brain.enabled = false;
+        
+        if (gameObject.name == "Scyther")
+        {
+            DropLoot(1);
+        }
+
         DropLoot(luck);
         Destroy(gameObject, 3f);
     }

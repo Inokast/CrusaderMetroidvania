@@ -128,8 +128,6 @@ public class PlayerMovement : MonoBehaviour
             side = -1;
             anim.Flip(side);
         }
-
-
     }
 
     private void Dash(float x, float y)
@@ -158,18 +156,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        
+    {        
         Vector2 dir = new Vector2(x, y);
-        Move(dir);
-       
+        Move(dir);       
     }
 
     public void Launch(Vector2 direction) 
     {
-
         rb.AddForce(direction * 10, ForceMode2D.Impulse);
-
     }
 
     private void Move(Vector2 dir)
@@ -178,7 +172,6 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-
 
         if (!wallJumped)
         {
@@ -189,7 +182,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(dir.x * speed, rb.velocity.y), wallJumpLerp * Time.deltaTime);
         }
-
     }
 
     private void WallJump() 
@@ -228,5 +220,4 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         canMove = true;
     }
-
 }

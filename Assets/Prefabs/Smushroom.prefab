@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 3354148100087798552}
+  drop: {fileID: 3702568063579028344, guid: 7ac87ee4a378ec348a8fda7f012b02d0, type: 3}
   speed: 1.5
   chaseRange: 9
   enemyHealth: 80
