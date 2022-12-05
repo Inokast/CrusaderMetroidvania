@@ -202,6 +202,12 @@ public class PlayerActions : MonoBehaviour
     {
         health = health - damage;
         healthBar.UpdateHealth(health);
+        if (health <= 0)
+        {
+            Respawn();
+            health = 100;
+            magicCharge = maxMagicCharge;
+        }
     }
 
     public void Death(int damage) 
@@ -218,6 +224,7 @@ public class PlayerActions : MonoBehaviour
     public void Respawn() 
     {
         gameObject.transform.position = new Vector3(checkpoint.x, checkpoint.y, 0);
+        healthBar.UpdateHealth(health);
     }
 
     private void ToggleStaffHitbox() 
