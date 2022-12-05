@@ -39,21 +39,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         previousScene = SceneManager.GetActiveScene().name;
-        if (previousScene == "End")
-        {
-            StartCoroutine(TransitionEndToBeginning(3f));
-        }
     }
 
     void Update()
     {
         Pause();
-    }
-
-    IEnumerator TransitionEndToBeginning(float awaiting)
-    {
-        yield return new WaitForSeconds(awaiting);
-        SceneManager.LoadScene(0);
     }
 
     public void Pause()
@@ -92,7 +82,6 @@ public class GameManager : MonoBehaviour
     public void OnMenuClick()
     {
         SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
         Debug.Log("went to main menu");
     }
 
