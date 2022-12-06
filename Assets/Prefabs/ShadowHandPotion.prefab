@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5364961420041210388}
   - component: {fileID: 419455179640697030}
   m_Layer: 0
-  m_Name: ShadowHand 1
+  m_Name: ShadowHandPotion
   m_TagString: ShadowhandM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -22,10 +22,16 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI[] alert;    //alert is the space for actual alert strings (scriptable objects?)
 
     [Header("In-game Values")]
-    [SerializeField] string previousScene = "";
+    [SerializeField] string previousScene;
     private PlayerSpawnBehavior playerSpawner;
     [SerializeField] bool paused;
-    
+
+    /*NOTE
+     Apparanetly there is weirdness that crops up when the DontDestroyOnLoad method is applied:
+    it seems to help with the scene transition system, but then breaks the pause menu/ UI functioning somehow...
+    - T.E.
+    */
+
 
     void Awake()
     {

@@ -22,22 +22,26 @@ using UnityEngine;
 
 public class PlayerSpawnBehavior : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    GameObject player;
 
     //This Script is called by the GameManager script to place the player at a point relative to the previous level.
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     public void PlacePlayer(string lastScene)
     {
-        Debug.Log("I should be last");
         GameObject spawnPoint;
         string tempName = "From" + lastScene;
         try
         {
             //Attempt to find the correlating spawn point and set the spawnPoint GO equal to that point
-            Debug.Log("Looking for:" + tempName);
+            Debug.Log("Looking for: " + tempName);
             spawnPoint = GameObject.FindGameObjectWithTag(tempName);
             Debug.Log(spawnPoint.name);
             player.transform.position = spawnPoint.transform.position;
-            //Instantiate(player, spawnPoint.transform.position, Quaternion.identity);
         }
         catch
         {

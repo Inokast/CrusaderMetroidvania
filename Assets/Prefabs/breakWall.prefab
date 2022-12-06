@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3703826453706893152}
   - component: {fileID: 3703826453706893155}
   m_Layer: 9
-  m_Name: Square (14)
-  m_TagString: Untagged
+  m_Name: breakWall
+  m_TagString: BreakableWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
