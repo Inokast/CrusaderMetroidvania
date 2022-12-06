@@ -10,6 +10,7 @@ public class PlayerActions : MonoBehaviour
     [Header("Spell Prefabs")]
     [SerializeField] private GameObject shootPrefab;
     [SerializeField] private GameObject shadowHandPrefab;
+    [SerializeField] GameObject blaster;
 
     [Header("PlayerStats")]
     public int health = 100;
@@ -50,6 +51,8 @@ public class PlayerActions : MonoBehaviour
         healthBar?.UpdateHealth(health);
         manaBar?.SetMaxMana((int)maxMagicCharge);
         manaBar?.UpdateMana((int)magicCharge);
+
+        blaster.SetActive(false);
     }
 
     // Update is called once per frame
@@ -178,6 +181,8 @@ public class PlayerActions : MonoBehaviour
             Destroy(breakable.gameObject);
         }
 
+        blaster.SetActive(true);
+
         StartCoroutine(AttackCooldown());
         manaBar.UpdateMana((int)magicCharge);
     }
@@ -248,5 +253,6 @@ public class PlayerActions : MonoBehaviour
     {
         yield return new WaitForSeconds(actionCooldown);
         isAttacking = false;
+        blaster.SetActive(false);
     }
 }
